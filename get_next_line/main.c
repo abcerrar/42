@@ -6,7 +6,7 @@
 /*   By: dcolera- <dcolera-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:41:07 by dcolera-          #+#    #+#             */
-/*   Updated: 2023/10/09 21:16:38 by dcolera-         ###   ########.fr       */
+/*   Updated: 2023/10/10 01:05:04 by dcolera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,20 @@ int main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 
-	line = get_next_line(fd);
-	printf("%s", line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	line = get_next_line(fd);
-	printf("%s", line);
 	/*
+	line = get_next_line(fd);
+	printf("%s", line);
+	line = get_next_line(fd);
+	printf("%s", line);
+	line = get_next_line(fd);
+	printf("%s", line);
+	*/
+	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		printf("%s", line);
 		line = get_next_line(fd);
 	}
-	*/
 	free(line);
 	close(fd);
 

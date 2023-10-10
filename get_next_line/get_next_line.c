@@ -6,7 +6,7 @@
 /*   By: dcolera- <dcolera-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:32:58 by dcolera-          #+#    #+#             */
-/*   Updated: 2023/10/09 21:43:15 by dcolera-         ###   ########.fr       */
+/*   Updated: 2023/10/10 01:12:49 by dcolera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*line_format(char *buffer)
 	int		i;
 	int		len;
 	char	*line;
-	
+
 	i = 0;
 	while (buffer[i] != '\n' && buffer[i])
 		i++;
@@ -68,8 +68,8 @@ char	*line_format(char *buffer)
 
 char	*get_buffline(int fd, char *buffer)
 {
-	char *new_buffer;
-	int bytes_read;
+	char	*new_buffer;
+	int		bytes_read;
 
 	if (contains(buffer, '\n') != -1)
 		return (buffer);
@@ -78,8 +78,8 @@ char	*get_buffline(int fd, char *buffer)
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, new_buffer, BUFFER_SIZE);
-		if (bytes_read <= 0)
-			break;
+		if (bytes_read == -1)
+			return (NULL);
 		new_buffer[bytes_read] = 0;
 		buffer = ft_strjoin(buffer, new_buffer);
 		if (contains(buffer, '\n') != -1)
@@ -89,12 +89,12 @@ char	*get_buffline(int fd, char *buffer)
 	return (buffer);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	static char *buffer;
+	static char	*buffer;
 	char		*line;
 
-	if (fd == -1)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	if (!buffer)
 	{
@@ -102,7 +102,11 @@ char *get_next_line(int fd)
 		buffer[0] = 0;
 	}
 	buffer = get_buffline(fd, buffer);
-	//printf("Pre buffer: %s\n", buffer);
+	if (!buffer[0] || !buffer)
+	{
+		free(buffer);
+		return (NULL);
+	}
 	line = line_format(buffer);
 	buffer = buffer_format(buffer);
 	return (line);
