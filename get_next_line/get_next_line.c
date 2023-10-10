@@ -34,10 +34,7 @@ char	*buffer_format(char *buffer)
 	while (buffer[i] != '\n' && buffer[i])
 		i++;
 	if (!buffer[i])
-	{
-		free(buffer);
-		return (NULL);
-	}
+		return (free(buffer), NULL);
 	buff2 = (char *)malloc(ft_strlen(buffer) - i);
 	while (buffer[++i])
 		buff2[j++] = buffer[i];
@@ -80,8 +77,11 @@ char	*get_buffline(int fd, char *buffer)
 		bytes_read = read(fd, new_buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 			return (NULL);
+		if (bytes_read == 0)
+			break;
 		new_buffer[bytes_read] = 0;
 		buffer = ft_strjoin(buffer, new_buffer);
+		//printf("Buffer: -%s-", buffer);
 		if (contains(buffer, '\n') != -1)
 			break;
 	}
@@ -98,15 +98,14 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!buffer)
 	{
-		buffer = (char *)malloc(BUFFER_SIZE + 1);
+		buffer = (char *)malloc(1);
 		buffer[0] = 0;
 	}
 	buffer = get_buffline(fd, buffer);
-	if (!buffer[0] || !buffer)
-	{
-		free(buffer);
+	if (!buffer)
 		return (NULL);
-	}
+	if (!buffer[0])
+		return (free(buffer), NULL);
 	line = line_format(buffer);
 	buffer = buffer_format(buffer);
 	return (line);

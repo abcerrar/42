@@ -31,6 +31,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = -1;
 	total_length = ft_strlen(s1) + ft_strlen(s2) + 1;
 	str = (char *)malloc(total_length);
+	//printf("Malloc strjoin of: %ld\n", ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
 		return (NULL);
 	while (++i < total_length)
