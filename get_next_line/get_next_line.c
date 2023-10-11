@@ -6,7 +6,7 @@
 /*   By: dcolera- <dcolera-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:32:58 by dcolera-          #+#    #+#             */
-/*   Updated: 2023/10/10 01:12:49 by dcolera-         ###   ########.fr       */
+/*   Updated: 2023/10/12 01:27:04 by dcolera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,9 @@ char	*get_buffline(int fd, char *buffer)
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, new_buffer, BUFFER_SIZE);
+		//not buffer free
 		if (bytes_read == -1)
-			return (NULL);
+			return (free(new_buffer), NULL);
 		if (bytes_read == 0)
 			break;
 		new_buffer[bytes_read] = 0;
@@ -96,16 +97,23 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
+	//printf("Buffer: %s\n", buffer);
 	if (!buffer)
 	{
 		buffer = (char *)malloc(1);
+		if (!buffer)
+			return(NULL);
 		buffer[0] = 0;
 	}
 	buffer = get_buffline(fd, buffer);
 	if (!buffer)
 		return (NULL);
 	if (!buffer[0])
-		return (free(buffer), NULL);
+	{
+		free(buffer);
+		buffer = NULL;
+		return (NULL);
+	}
 	line = line_format(buffer);
 	buffer = buffer_format(buffer);
 	return (line);
