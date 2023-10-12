@@ -6,7 +6,7 @@
 /*   By: dcolera- <dcolera-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:32:58 by dcolera-          #+#    #+#             */
-/*   Updated: 2023/10/12 01:27:04 by dcolera-         ###   ########.fr       */
+/*   Updated: 2023/10/12 03:17:48 by dcolera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	*line_format(char *buffer)
 		i++;
 	len = i;
 	line = (char *)malloc(len + 1);
+	if (!line)
+		return (NULL);
 	i = -1;
 	while (++i < len)
 		line[i] = buffer[i];
@@ -71,17 +73,29 @@ char	*get_buffline(int fd, char *buffer)
 	if (contains(buffer, '\n') != -1)
 		return (buffer);
 	new_buffer = (char *)malloc(BUFFER_SIZE + 1);
+	if (!new_buffer)
+		return (free(buffer), NULL);
 	bytes_read = 1;
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, new_buffer, BUFFER_SIZE);
 		//not buffer free
 		if (bytes_read == -1)
-			return (free(new_buffer), NULL);
+		{
+			free(new_buffer);
+			free(buffer);
+			return (NULL);
+		}
 		if (bytes_read == 0)
 			break;
 		new_buffer[bytes_read] = 0;
 		buffer = ft_strjoin(buffer, new_buffer);
+		if (!buffer)
+		{
+			free(new_buffer);
+			free(buffer);
+			return (NULL);
+		}
 		//printf("Buffer: -%s-", buffer);
 		if (contains(buffer, '\n') != -1)
 			break;
@@ -95,9 +109,14 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
+	if (buffer && read(fd, 0, 0) < 0)
+	{
+		free(buffer);
+		buffer = NULL;
+		return (NULL);
+	}
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	//printf("Buffer: %s\n", buffer);
 	if (!buffer)
 	{
 		buffer = (char *)malloc(1);

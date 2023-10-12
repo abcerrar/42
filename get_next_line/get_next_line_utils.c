@@ -6,7 +6,7 @@
 /*   By: dcolera- <dcolera-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:31:54 by dcolera-          #+#    #+#             */
-/*   Updated: 2023/10/10 01:11:17 by dcolera-         ###   ########.fr       */
+/*   Updated: 2023/10/12 03:17:57 by dcolera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = -1;
 	total_length = ft_strlen(s1) + ft_strlen(s2) + 1;
 	str = (char *)malloc(total_length);
-	//printf("Malloc strjoin of: %ld\n", ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
-		return (NULL);
+		return (free(s1), NULL);
 	while (++i < total_length)
 	{
 		if (i < ft_strlen(s1))

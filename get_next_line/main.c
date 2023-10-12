@@ -6,7 +6,7 @@
 /*   By: dcolera- <dcolera-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:41:07 by dcolera-          #+#    #+#             */
-/*   Updated: 2023/10/12 01:09:18 by dcolera-         ###   ########.fr       */
+/*   Updated: 2023/10/12 02:40:35 by dcolera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ int main(int argc, char **argv)
 		printf("%s", line);
 		line = get_next_line(fd);
 	}
-	if (argc > 1)
-		line = get_next_line(fd);
+	line = get_next_line(fd);
+	line = get_next_line(fd);
+	line = get_next_line(fd);
+	line = get_next_line(fd);
 	free(line);
 	close(fd);
 
