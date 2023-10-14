@@ -17,12 +17,12 @@ int main(int argc, char **argv)
 	
 	int fd;
 	char *line;
-	fd = open("test.txt", O_RDWR);
 	(void)argc;
 	(void)argv;
 	(void)line;
 
 	/*
+	fd = open("test.txt", O_RDWR);
 	line = get_next_line(fd);
 	printf("Line: %s", line);
 	free(line);
@@ -31,6 +31,7 @@ int main(int argc, char **argv)
 	free(line);
 	*/
 	
+	fd = open("test.txt", O_RDONLY);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -38,6 +39,32 @@ int main(int argc, char **argv)
 		free(line);
 		line = get_next_line(fd);
 	}
+	close(fd);
+	//Test
+	printf("\n------------------\nTests:\n");
+	int count = 0;
+	int lines = 0;
+	char *res;
+
+	fd = open("test.txt", O_RDONLY);
+	do
+	{
+		res = get_next_line(fd);
+		free(res);
+		lines++;
+	}while(res != NULL && lines< 20);
+	close(fd);
+
+	fd = open("test.txt", O_RDONLY);
+	do
+	{
+		res = get_next_line(fd);
+		free(res);
+		if (res != NULL)
+			count++;
+	}while(res != NULL && count < 20);
+	printf("Lines: %d\n", lines);
+	printf("Count: %d\n", count);
 	close(fd);
 
 	return (0);
