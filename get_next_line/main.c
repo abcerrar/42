@@ -20,26 +20,24 @@ int main(int argc, char **argv)
 	fd = open("test.txt", O_RDWR);
 	(void)argc;
 	(void)argv;
+	(void)line;
 
 	/*
 	line = get_next_line(fd);
-	printf("%s", line);
+	printf("Line: %s", line);
+	free(line);
 	line = get_next_line(fd);
-	printf("%s", line);
-	line = get_next_line(fd);
-	printf("%s", line);
+	printf("Line: %s", line);
+	free(line);
 	*/
+	
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		printf("%s", line);
+		free(line);
 		line = get_next_line(fd);
 	}
-	line = get_next_line(fd);
-	line = get_next_line(fd);
-	line = get_next_line(fd);
-	line = get_next_line(fd);
-	free(line);
 	close(fd);
 
 	return (0);
