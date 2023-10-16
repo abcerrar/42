@@ -36,6 +36,8 @@ char	*buffer_format(char *buffer)
 	if (!buffer[i])
 		return (free(buffer), NULL);
 	buff2 = (char *)malloc(ft_strlen(buffer) - i);
+	if (!buff2)
+		return (free(buffer), NULL);
 	while (buffer[++i])
 		buff2[j++] = buffer[i];
 	buff2[j] = 0;
