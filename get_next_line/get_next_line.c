@@ -56,6 +56,8 @@ char	*line_format(char *buffer)
 		i++;
 	len = i;
 	line = (char *)malloc(len + 1);
+	if (!line)
+		return (NULL);
 	i = -1;
 	while (++i < len)
 		line[i] = buffer[i];
