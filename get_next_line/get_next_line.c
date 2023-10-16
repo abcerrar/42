@@ -36,11 +36,12 @@ char	*buffer_format(char *buffer)
 	if (!buffer[i])
 		return (free(buffer), NULL);
 	buff2 = (char *)malloc(ft_strlen(buffer) - i);
-	if (!buff2)
-		return (free(buffer), NULL);
-	while (buffer[++i])
-		buff2[j++] = buffer[i];
-	buff2[j] = 0;
+	if (buff2)
+	{
+		while (buffer[++i])
+			buff2[j++] = buffer[i];
+		buff2[j] = 0;
+	}
 	free(buffer);
 	return (buff2);
 }
@@ -138,6 +139,12 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	line = line_format(buffer);
+	if (!line)
+	{
+		free(buffer);
+		buffer = NULL;
+		return (NULL);
+	}
 	buffer = buffer_format(buffer);
 	return (line);
 }
