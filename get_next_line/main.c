@@ -41,6 +41,7 @@ int main(int argc, char **argv)
 	}
 	close(fd);
 	//Test
+	/*
 	printf("\n------------------\nTests:\n");
 	int count = 0;
 	int lines = 0;
@@ -63,9 +64,10 @@ int main(int argc, char **argv)
 		if (res != NULL)
 			count++;
 	}while(res != NULL && count < 20);
-	printf("Lines: %d\n", lines);
-	printf("Count: %d\n", count);
+	//printf("Lines: %d\n", lines);
+	//printf("Count: %d\n", count);
 	close(fd);
+	*/
 
 	return (0);
 }

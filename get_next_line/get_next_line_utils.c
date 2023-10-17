@@ -12,6 +12,18 @@
 
 #include "get_next_line.h"
 
+
+int	contains(char *str, char c)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == c)
+			return (i);
+	return (-1);
+}
+
 size_t	ft_strlen(char *str)
 {
 	int	i;
@@ -22,15 +34,15 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2, int len_s1)
 {
-	size_t	total_length;
+	int		total_length;
 	char	*str;
-	size_t	i;
-	size_t	len_s1;
+	int		i;
+	//size_t	len_s1;
 
 	i = -1;
-	len_s1 = ft_strlen(s1);
+	//len_s1 = ft_strlen(s1);
 	total_length = len_s1 + ft_strlen(s2) + 1;
 	str = (char *)malloc(total_length);
 	if (!str)

@@ -12,15 +12,14 @@
 
 #include "get_next_line.h"
 
-int	contains(char *str, char c)
-{
-	int	i;
 
-	i = -1;
-	while (str[++i])
-		if (str[i] == c)
-			return (i);
-	return (-1);
+void	*free_buffer(char **buffer, char **str2)
+{
+	free(*buffer);
+	*buffer = NULL;
+	if (str2)
+		free(*str2);
+	return (NULL);
 }
 
 char	*buffer_format(char *buffer)
@@ -72,6 +71,7 @@ char	*get_buffline(int fd, char *buffer)
 {
 	char	*new_buffer;
 	int		bytes_read;
+	int		len_buf;
 
 	if (contains(buffer, '\n') != -1)
 		return (buffer);
@@ -79,28 +79,20 @@ char	*get_buffline(int fd, char *buffer)
 	if (!new_buffer)
 		return (free(buffer), NULL);
 	bytes_read = 1;
+	len_buf = ft_strlen(buffer);
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, new_buffer, BUFFER_SIZE);
-		//not buffer free
 		if (bytes_read == -1)
-		{
-			free(new_buffer);
-			free(buffer);
-			return (NULL);
-		}
+			return (free_buffer(&buffer, &new_buffer));
 		if (bytes_read == 0)
 			break;
 		new_buffer[bytes_read] = 0;
-		buffer = ft_strjoin(buffer, new_buffer);
+		buffer = ft_strjoin(buffer, new_buffer, len_buf);
 		if (!buffer)
-		{
-			free(new_buffer);
-			free(buffer);
-			return (NULL);
-		}
-		//printf("Buffer: -%s-", buffer);
-		if (contains(buffer, '\n') != -1)
+			return (free_buffer(&buffer, &new_buffer));
+		len_buf += ft_strlen(new_buffer);
+		if (contains(new_buffer, '\n') != -1)
 			break;
 	}
 	free(new_buffer);
@@ -112,14 +104,8 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
-	//printf("fd: %d\n", fd);
-	//printf("Read code: %ld\n", read(fd, 0, 0));
 	if (buffer && read(fd, 0, 0) < 0)
-	{
-		free(buffer);
-		buffer = NULL;
-		return (NULL);
-	}
+		return (free_buffer(&buffer, NULL));
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	if (!buffer)
@@ -133,18 +119,10 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	if (!buffer[0])
-	{
-		free(buffer);
-		buffer = NULL;
-		return (NULL);
-	}
+		return (free_buffer(&buffer, NULL));
 	line = line_format(buffer);
 	if (!line)
-	{
-		free(buffer);
-		buffer = NULL;
-		return (NULL);
-	}
+		return (free_buffer(&buffer, NULL));
 	buffer = buffer_format(buffer);
 	return (line);
 }

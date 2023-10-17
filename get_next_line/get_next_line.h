@@ -23,6 +23,7 @@
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoin(char *s1, char *s2, int len_s1);
 size_t	ft_strlen(char *str);
+int	contains(char *str, char c);
 #endif
