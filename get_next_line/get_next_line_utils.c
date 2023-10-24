@@ -6,12 +6,11 @@
 /*   By: dcolera- <dcolera-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:31:54 by dcolera-          #+#    #+#             */
-/*   Updated: 2023/10/12 03:31:51 by dcolera-         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:40:35 by dcolera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 int	contains(char *str, char c)
 {
@@ -39,10 +38,8 @@ char	*ft_strjoin(char *s1, char *s2, int len_s1)
 	int		total_length;
 	char	*str;
 	int		i;
-	//size_t	len_s1;
 
 	i = -1;
-	//len_s1 = ft_strlen(s1);
 	total_length = len_s1 + ft_strlen(s2) + 1;
 	str = (char *)malloc(total_length);
 	if (!str)
@@ -56,6 +53,5 @@ char	*ft_strjoin(char *s1, char *s2, int len_s1)
 	}
 	str[i - 1] = 0;
 	free(s1);
-//	free(s2);
 	return (str);
 }

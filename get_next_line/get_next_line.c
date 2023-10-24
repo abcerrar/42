@@ -6,12 +6,11 @@
 /*   By: dcolera- <dcolera-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:32:58 by dcolera-          #+#    #+#             */
-/*   Updated: 2023/10/12 03:26:36 by dcolera-         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:43:43 by dcolera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 void	*free_buffer(char **buffer, char **str2)
 {
@@ -86,14 +85,14 @@ char	*get_buffline(int fd, char *buffer)
 		if (bytes_read == -1)
 			return (free_buffer(&buffer, &new_buffer));
 		if (bytes_read == 0)
-			break;
+			break ;
 		new_buffer[bytes_read] = 0;
 		buffer = ft_strjoin(buffer, new_buffer, len_buf);
 		if (!buffer)
 			return (free_buffer(&buffer, &new_buffer));
 		len_buf += ft_strlen(new_buffer);
 		if (contains(new_buffer, '\n') != -1)
-			break;
+			break ;
 	}
 	free(new_buffer);
 	return (buffer);
@@ -112,7 +111,7 @@ char	*get_next_line(int fd)
 	{
 		buffer = (char *)malloc(1);
 		if (!buffer)
-			return(NULL);
+			return (NULL);
 		buffer[0] = 0;
 	}
 	buffer = get_buffline(fd, buffer);
