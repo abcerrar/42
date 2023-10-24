@@ -6,7 +6,7 @@
 /*   By: dcolera- <dcolera-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:30:18 by dcolera-          #+#    #+#             */
-/*   Updated: 2023/10/24 19:40:09 by dcolera-         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:44:34 by dcolera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *s1, char *s2, int len_s1);
+char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(char *str);
 int		contains(char *str, char c);
 #endif

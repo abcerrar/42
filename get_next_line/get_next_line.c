@@ -6,7 +6,7 @@
 /*   By: dcolera- <dcolera-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:32:58 by dcolera-          #+#    #+#             */
-/*   Updated: 2023/10/24 19:43:43 by dcolera-         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:46:27 by dcolera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ char	*get_buffline(int fd, char *buffer)
 {
 	char	*new_buffer;
 	int		bytes_read;
-	int		len_buf;
 
 	if (contains(buffer, '\n') != -1)
 		return (buffer);
@@ -78,7 +77,6 @@ char	*get_buffline(int fd, char *buffer)
 	if (!new_buffer)
 		return (free(buffer), NULL);
 	bytes_read = 1;
-	len_buf = ft_strlen(buffer);
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, new_buffer, BUFFER_SIZE);
@@ -87,10 +85,9 @@ char	*get_buffline(int fd, char *buffer)
 		if (bytes_read == 0)
 			break ;
 		new_buffer[bytes_read] = 0;
-		buffer = ft_strjoin(buffer, new_buffer, len_buf);
+		buffer = ft_strjoin(buffer, new_buffer);
 		if (!buffer)
 			return (free_buffer(&buffer, &new_buffer));
-		len_buf += ft_strlen(new_buffer);
 		if (contains(new_buffer, '\n') != -1)
 			break ;
 	}
