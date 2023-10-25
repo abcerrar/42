@@ -11,6 +11,12 @@ int	print_format(va_list args, char c)
 		print_number(va_arg(args, int));
 	if (c == 'u')
 		print_unsigned_number(va_arg(args, unsigned int));
+	if (c == '%')
+		print_perc();
+	if (c == 'x')
+		print_hex(va_arg(args, int), 0);
+	if (c == 'X')
+		print_hex(va_arg(args, int), 1);
 
 }
 

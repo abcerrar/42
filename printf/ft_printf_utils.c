@@ -7,6 +7,12 @@ int	print_char(char c)
 	return (1);
 }
 
+int	print_perc()
+{
+	write(1, "%", 1);
+	return (1);
+}
+
 int print_string(char *str)
 {
 	size_t str_len;
@@ -28,7 +34,8 @@ int print_number(int num)
 	return (str_len);
 }
 
-int	print_unsigned_number(unsigned int number) {
+int	print_unsigned_number(unsigned int number)
+{
 	int i;
 	int len;
 	unsigned int num_aux;
@@ -49,5 +56,36 @@ int	print_unsigned_number(unsigned int number) {
 		i--;
 	}
 	write(1, str_num, len);	
+	return (len);
+}
+
+int	print_hex(int num, int mayus)
+{
+	int i;
+	int	len;
+	int num_aux;
+	char str_num[11];
+	char base[16];
+
+	if (mayus)
+		ft_strlcpy(base, "123456789ABCDEF", 16);
+	else
+		ft_strlcpy(base, "123456789abcdef", 16);
+	i = 0;
+	len = 0;
+	num_aux = num;
+	while (num_aux != 0)
+	{
+		len++;
+		num_aux /= 10;
+	}
+	i = len - 1;
+	while (num != 0)
+	{
+		str_num[i] = base[(num % 16) - 1];
+		num /= 16;
+		i--;
+	}
+	write(1, str_num, len);
 	return (len);
 }
