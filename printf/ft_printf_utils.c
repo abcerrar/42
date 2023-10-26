@@ -1,6 +1,19 @@
 #include "libft.h"
 #include "ft_printf.h"
 
+int num_len(unsigned int num, int base)
+{
+	int len;
+
+	len = 0;
+	while (num != 0)
+	{
+		len++;
+		num /= base;
+	}
+	return (len);
+}
+
 int	print_char(char c)
 {
 	write(1, &c, 1);
@@ -38,16 +51,9 @@ int	print_unsigned_number(unsigned int number)
 {
 	int i;
 	int len;
-	unsigned int num_aux;
 	char str_num[20];
 
-	len = 0;
-	num_aux = number;
-	while (num_aux != 0)
-	{
-		len++;
-		num_aux = num_aux / 10;
-	}
+	len = num_len(number, 10);
 	i = len - 1;
 	while (i >= 0)
 	{
@@ -59,26 +65,18 @@ int	print_unsigned_number(unsigned int number)
 	return (len);
 }
 
-int	print_hex(int num, int mayus)
+int	print_hex(unsigned int num, int mayus)
 {
 	int i;
 	int	len;
-	int num_aux;
-	char str_num[11];
+	char str_num[20];
 	char base[16];
 
 	if (mayus)
 		ft_strlcpy(base, "123456789ABCDEF", 16);
 	else
 		ft_strlcpy(base, "123456789abcdef", 16);
-	i = 0;
-	len = 0;
-	num_aux = num;
-	while (num_aux != 0)
-	{
-		len++;
-		num_aux /= 10;
-	}
+	len = num_len(num, 16);
 	i = len - 1;
 	while (num != 0)
 	{
