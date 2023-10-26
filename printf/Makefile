@@ -3,26 +3,29 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRC = ft_printf_utils.c ft_printf.c 
 OBJ = $(SRC:.c=.o)
+LIBFTDIR = ./libft
+LIBFTNAME = libft.a
 MAKEFLAGS += -s
 
 all : $(NAME)
 
-.PHONY: clean fclean
+.PHONY:	all clean fclean re
 
-#borrar
-comp:
-	$(CC) $(SRC) main.c libft.a
-san:
-	$(CC) -fsanitize=address -g $(SRC) main.c libft.a 
+makelibft:
+	make -C $(LIBFTDIR)
+	cp $(LIBFTDIR)/$(LIBFTNAME) .
+	mv $(LIBFTNAME) $(NAME)
+	
 
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+$(NAME): makelibft $(OBJ) 
+	ar rcs $(NAME) $(OBJ) 
 
 clean:
 	rm -f $(OBJ)
-	rm a.out
+	cd $(LIBFTDIR) && make clean
 
 fclean: clean
 	rm -f $(NAME)
+	cd $(LIBFTDIR) && make fclean
 
 re: fclean all

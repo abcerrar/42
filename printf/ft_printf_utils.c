@@ -1,9 +1,8 @@
-#include "libft.h"
 #include "ft_printf.h"
 
-int num_len(unsigned int num, int base)
+int	num_len(unsigned long num, int base)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (num != 0)
@@ -20,25 +19,19 @@ int	print_char(char c)
 	return (1);
 }
 
-int	print_perc()
+int	print_string(char *str)
 {
-	write(1, "%", 1);
-	return (1);
-}
-
-int print_string(char *str)
-{
-	size_t str_len;
+	size_t	str_len;
 
 	str_len = ft_strlen(str);
 	write(1, str, str_len);
 	return (str_len);
 }
 
-int print_number(int num)
+int	print_number(int num)
 {
-	char *num_str;
-	size_t str_len;
+	char	*num_str;
+	size_t	str_len;
 
 	num_str = ft_itoa(num);
 	print_string(num_str);
@@ -49,9 +42,9 @@ int print_number(int num)
 
 int	print_unsigned_number(unsigned int number)
 {
-	int i;
-	int len;
-	char str_num[20];
+	int		i;
+	int		len;
+	char	str_num[20];
 
 	len = num_len(number, 10);
 	i = len - 1;
@@ -65,25 +58,34 @@ int	print_unsigned_number(unsigned int number)
 	return (len);
 }
 
-int	print_hex(unsigned int num, int mayus)
+int	print_hex(unsigned long num, int mayus)
 {
-	int i;
-	int	len;
-	char str_num[20];
-	char base[16];
+	int		i;
+	int		len;
+	char	str_num[20];
+	char	base[16];
 
 	if (mayus)
-		ft_strlcpy(base, "123456789ABCDEF", 16);
+		ft_strlcpy(base, "0123456789ABCDEF", 17);
 	else
-		ft_strlcpy(base, "123456789abcdef", 16);
+		ft_strlcpy(base, "0123456789abcdef", 17);
 	len = num_len(num, 16);
 	i = len - 1;
 	while (num != 0)
 	{
-		str_num[i] = base[(num % 16) - 1];
+		str_num[i] = base[(num % 16)];
 		num /= 16;
 		i--;
 	}
 	write(1, str_num, len);
 	return (len);
+}
+
+int	print_ptr(void *ptr)
+{
+	unsigned long	num_ptr;
+
+	num_ptr = (unsigned long)ptr;
+	write(1, "0x", 2);
+	return (print_hex(num_ptr, 0));
 }

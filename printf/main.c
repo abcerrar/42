@@ -1,30 +1,25 @@
-//#include "libftprintf.a"
-//#include <stdio.h>
-#include "libft.h"
 #include "ft_printf.h"
-
-
-
 
 int main(int argc, char **argv)
 {
 	char c;
-	
+	void *ptr;
+	int num = 0x1A;
+
 	c = 'a';
 	ft_printf("Print char: %c\n", c);
 	ft_printf("Print sring: %s\n", "hola");
-	ft_printf("Print number: %d\n", 7894);
-	ft_printf("Print unsigned: %u\n", -42);
-	printf("Print unsigned original: %u\n", -42);
+	ft_printf("Print number: %d\n", num);
+	ft_printf("Print unsigned: %u\n", num);
+	printf("Print unsigned original: %u\n", num);
 	ft_printf("Print %%: %%\n");
-	ft_printf("Print hex mayus: %X\n", ft_atoi(argv[1]));
-	ft_printf("Print hex minus: %x\n", ft_atoi(argv[1]));
-	printf("Print Hex original: %x\n", ft_atoi(argv[1]));
-	
+	ft_printf("Print hex mayus: %X\n", num);
+	ft_printf("Print hex minus: %x\n", num);
+	printf("Print Hex original: %x\n", num);
+	ft_printf("Print ptr: %p\n", ptr);
+	printf("Pr or ptr: %p\n", ptr);
 
 	//tests
-	int num = -2;
-	void *ptr;
 	ft_printf("Tests\n");
 
 	printf("%%d: %d\n", num);
