@@ -19,7 +19,6 @@ int	print_format(va_list args, char c, int total_length)
 		total_length += print_hex(va_arg(args, int), 0);
 	else if (c == 'X')
 		total_length += print_hex(va_arg(args, int), 1);
-	printf("Returned value: %d\n", total_length);
 	return (total_length);
 }
 
@@ -30,7 +29,6 @@ int	ft_printf(char const *str, ...)
 	va_list	args;
 
 	total_length = ft_strlen(str);
-	printf("Initial value: %d\n", total_length);
 	i = 0;
 	va_start(args, str);
 	while (str[i])
@@ -42,6 +40,5 @@ int	ft_printf(char const *str, ...)
 		i++;
 	}
 	va_end(args);
-	printf("Filar returned vlaue: %d\n", total_length);
 	return (total_length); 
 }
