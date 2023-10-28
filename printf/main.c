@@ -2,31 +2,50 @@
 
 int main(int argc, char **argv)
 {
-	char c;
-	void *ptr;
-	int num = 0x1A;
 
-	c = 'a';
-	ft_printf("Print char: %c\n", c);
-	ft_printf("Print sring: %s\n", "hola");
-	ft_printf("Print number: %d\n", num);
-	ft_printf("Print unsigned: %u\n", num);
-	printf("Print unsigned original: %u\n", num);
-	ft_printf("Print %%: %%\n");
-	ft_printf("Print hex mayus: %X\n", num);
-	ft_printf("Print hex minus: %x\n", num);
-	printf("Print Hex original: %x\n", num);
-	ft_printf("Print ptr: %p\n", ptr);
-	printf("Pr or ptr: %p\n", ptr);
+	int n1 = printf("%s, %c\n", "hola", 'R');
+	int n2 = ft_printf("%s, %c\n", "hola", 'R');
 
+	printf("n1: %d\nn2: %d\n", n1, n2);
+	/*
+	if (argc < 3 || ft_strlen(argv[1]) != 1)
+	{
+		printf("Error\n");
+		return (1);
+	}
 	//tests
-	ft_printf("Tests\n");
+	switch(argv[1][0])
+	{
+		case 'c':
+			printf("Expected: %c\n", argv[2][0]);
+			ft_printf("Got: %c\n", argv[2][0]);
+			break;
+		case 's':
+			printf("Expected: %s\n", argv[2]);
+			ft_printf("Got: %s\n", argv[2]);
+			break;
+		case 'p':
+			printf("Expected: %p\n", (void *)argv[2]);
+			ft_printf("Got: %p\n", (void *)argv[2]);
+			break;
+		case 'd':
+			printf("Expected: %d\n", ft_atoi(argv[2]));
+			ft_printf("Got: %d\n", ft_atoi(argv[2]));
+			break;
+		case 'i':
+			printf("Expected: %d\n", ft_atoi(argv[2]));
+			ft_printf("Got: %d\n", ft_atoi(argv[2]));
+			break;
+		case 'u':
+			printf("Expected: %u\n", (unsigned int)ft_atoi(argv[2]));
+			ft_printf("Got: %u\n", (unsigned int)ft_atoi(argv[2]));
+			break;
+		case 'x':
+			printf("Expected: %x\n", ft_atoi(argv[2]));
+			ft_printf("Got: %x\n", ft_atoi(argv[2]));
+			break;
+	}
+	*/
 
-	printf("%%d: %d\n", num);
-	printf("%%i: %i\n", num);
-	printf("%%u: %u\n", num);
-	printf("%%p: %p\n", ptr);
-	printf("%%x: %x\n", num);
-	printf("%%X: %X\n", num);
 	return (0);
 }
