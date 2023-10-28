@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	num_len(unsigned long num, int base)
+int	num_len(unsigned int num, int base)
 {
 	int	len;
 
@@ -65,22 +65,21 @@ int	print_unsigned_number(unsigned int number)
 	return (len);
 }
 
-int	print_hex(unsigned long num, int mayus)
+int	print_hex(unsigned int num, int mayus)
 {
 	int		i;
 	int		len;
-	char	str_num[20];
+	char	str_num[12];
 	char	base[16];
 
-	if (mayus)
-		ft_strlcpy(base, "0123456789ABCDEF", 17);
-	else
-		ft_strlcpy(base, "0123456789abcdef", 17);
+	ft_strlcpy(base, "0123456789abcdef", 17);
 	len = num_len(num, 16);
 	i = len - 1;
 	while (num != 0)
 	{
 		str_num[i] = base[(num % 16)];
+		if (mayus)
+			str_num[i] = ft_toupper(str_num[i]);
 		num /= 16;
 		i--;
 	}
@@ -94,5 +93,5 @@ int	print_ptr(void *ptr)
 
 	num_ptr = (unsigned long)ptr;
 	write(1, "0x", 2);
-	return (print_hex(num_ptr, 0));
+	return (print_hex(num_ptr, 0) + 2);
 }

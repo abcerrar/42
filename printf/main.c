@@ -3,13 +3,14 @@
 int main(int argc, char **argv)
 {
 
-	int n1 = printf("%s, %c\n", (char *)NULL, 'R');
-	int n2 = ft_printf("%s, %c\n", (char *)NULL, 'R');
+	void *ptr;
+	int n1 = printf("1: %p\n", ft_atoi(argv[1]));
+	int n2 = ft_printf("2: %p\n", ft_atoi(argv[1]));
 
 	printf("n1: %d\nn2: %d\n", n1, n2);
 
-	n1 = ft_printf("%u\n", 0);
-	n2 = printf("%u\n", 0);
+	n1 = ft_printf("%u\n", -1);
+	n2 = printf("%u\n", -1);
 
 	printf("n1: %d\nn2: %d\n", n1, n2);
 	/*
