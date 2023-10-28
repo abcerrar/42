@@ -5,6 +5,8 @@ int	num_len(unsigned long num, int base)
 	int	len;
 
 	len = 0;
+	if (num == 0)
+		return (1);
 	while (num != 0)
 	{
 		len++;
@@ -23,6 +25,11 @@ int	print_string(char *str)
 {
 	size_t	str_len;
 
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	str_len = ft_strlen(str);
 	write(1, str, str_len);
 	return (str_len);

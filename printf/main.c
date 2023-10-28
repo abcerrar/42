@@ -3,8 +3,13 @@
 int main(int argc, char **argv)
 {
 
-	int n1 = printf("%s, %c\n", "hola", 'R');
-	int n2 = ft_printf("%s, %c\n", "hola", 'R');
+	int n1 = printf("%s, %c\n", (char *)NULL, 'R');
+	int n2 = ft_printf("%s, %c\n", (char *)NULL, 'R');
+
+	printf("n1: %d\nn2: %d\n", n1, n2);
+
+	n1 = ft_printf("%u\n", 0);
+	n2 = printf("%u\n", 0);
 
 	printf("n1: %d\nn2: %d\n", n1, n2);
 	/*
