@@ -7,13 +7,10 @@ int main(int argc, char **argv)
 	void *ptr;
 	if (argc < 2)
 		return 0;
-	int n1 = printf(" %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	int n1 = printf(" %p %p ", 0, 0);
 	printf("\n");
-	int n2 = ft_printf(" %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-
-	printf("\n-------------------------------\n");
-	printf("%p\n", 0);
-	ft_printf("%p\n", 0);
+	int n2 = ft_printf(" %p %p ", 0, 0);
+	printf("\nn1: %d\nn2: %d\n", n1, n2);
 
 	/*
 	if (argc < 3 || ft_strlen(argv[1]) != 1)

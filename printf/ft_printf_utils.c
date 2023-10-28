@@ -101,11 +101,6 @@ int	print_ptr(void *ptr)
 	unsigned long	num_ptr;
 
 	num_ptr = (unsigned long)ptr;
-	if (num_ptr == 0)
-	{
-		write(1, "(nil)", 5);
-		return (5);
-	}
 	write(1, "0x", 2);
 	return (print_hex(num_ptr, 0, 1) + 2);
 }
