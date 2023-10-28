@@ -1,9 +1,11 @@
 #include "ft_printf.h"
 
-int	num_len(unsigned int num, int base)
+int	num_len(unsigned long num, int base, int is_long)
 {
 	int	len;
 
+	if (!is_long)
+		num = (unsigned int)num;
 	len = 0;
 	if (num == 0)
 		return (1);
@@ -53,7 +55,7 @@ int	print_unsigned_number(unsigned int number)
 	int		len;
 	char	str_num[20];
 
-	len = num_len(number, 10);
+	len = num_len(number, 10, 0);
 	i = len - 1;
 	while (i >= 0)
 	{
@@ -65,7 +67,7 @@ int	print_unsigned_number(unsigned int number)
 	return (len);
 }
 
-int	print_hex(unsigned int num, int mayus)
+int	print_hex(unsigned long num, int mayus, int is_long)
 {
 	int		i;
 	int		len;
@@ -73,7 +75,9 @@ int	print_hex(unsigned int num, int mayus)
 	char	base[16];
 
 	ft_strlcpy(base, "0123456789abcdef", 17);
-	len = num_len(num, 16);
+	if (!is_long)
+		num = (unsigned int)num;
+	len = num_len(num, 16, is_long);
 	i = len - 1;
 	while (num != 0)
 	{
@@ -93,5 +97,5 @@ int	print_ptr(void *ptr)
 
 	num_ptr = (unsigned long)ptr;
 	write(1, "0x", 2);
-	return (print_hex(num_ptr, 0) + 2);
+	return (print_hex(num_ptr, 0, 1) + 2);
 }
