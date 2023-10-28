@@ -16,9 +16,9 @@ int	print_format(va_list args, char c, int total_length)
 	else if (c == '%')
 		total_length += print_char('%');
 	else if (c == 'x')
-		total_length += print_hex(va_arg(args, int), 0);
+		total_length += print_hex(va_arg(args, int), 0, 0);
 	else if (c == 'X')
-		total_length += print_hex(va_arg(args, int), 1);
+		total_length += print_hex(va_arg(args, int), 1, 0);
 	return (total_length);
 }
 
