@@ -74,6 +74,11 @@ int	print_hex(unsigned long num, int mayus, int is_long)
 	char	str_num[12];
 	char	base[16];
 
+	if (num == 0)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
 	ft_strlcpy(base, "0123456789abcdef", 17);
 	if (!is_long)
 		num = (unsigned int)num;
@@ -96,6 +101,11 @@ int	print_ptr(void *ptr)
 	unsigned long	num_ptr;
 
 	num_ptr = (unsigned long)ptr;
+	if (num_ptr == 0)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
 	write(1, "0x", 2);
 	return (print_hex(num_ptr, 0, 1) + 2);
 }

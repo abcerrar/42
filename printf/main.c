@@ -7,16 +7,14 @@ int main(int argc, char **argv)
 	void *ptr;
 	if (argc < 2)
 		return 0;
-	printf("U mas grande: %u\n", UINT_MAX);
-	int n1 = printf("1: %x\n", LONG_MIN + 1);
-	int n2 = ft_printf("2: %x\n", LONG_MIN + 1);
+	int n1 = printf(" %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	printf("\n");
+	int n2 = ft_printf(" %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 
-	printf("n1: %d\nn2: %d\n", n1, n2);
+	printf("\n-------------------------------\n");
+	printf("%p\n", 0);
+	ft_printf("%p\n", 0);
 
-	n1 = ft_printf("%u\n", -1);
-	n2 = printf("%u\n", -1);
-
-	printf("n1: %d\nn2: %d\n", n1, n2);
 	/*
 	if (argc < 3 || ft_strlen(argv[1]) != 1)
 	{
