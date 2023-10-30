@@ -17,7 +17,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define MAX_INTEGER = 2147483647;
 
 typedef struct s_list
 {
