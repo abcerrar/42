@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcolera- <dcolera-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:41:07 by dcolera-          #+#    #+#             */
-/*   Updated: 2023/10/12 02:40:35 by dcolera-         ###   ########.fr       */
+/*   Created: 2023/10/09 19:30:18 by dcolera-          #+#    #+#             */
+/*   Updated: 2023/10/24 19:44:34 by dcolera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int main(int argc, char **argv)
-{
-	
-	int fd;
-	int fd2;
-	char *line;
-	char *line2;
-	(void)argc;
-	(void)argv;
-	(void)line;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
 
-	fd = open("test.txt", O_RDONLY);
-	fd2 = open("test2.txt", O_RDONLY);
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
 
-	line = get_next_line(fd);
-	printf("%s", line);
-	line2 = get_next_line(fd2);
-	printf("%s", line2);
-
-	free(line);
-	free(line2);
-
-	close(fd);
-	close(fd2);
-	return (0);
-}
+char	*get_next_line(int fd);
+char	*ft_strjoin(char *s1, char *s2);
+size_t	ft_strlen(char *str);
+int		contains(char *str, char c);
+#endif
