@@ -97,7 +97,7 @@ char	*get_buffline(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer[10];
+	static char	*buffer[4096];
 	char		*line;
 
 	if (buffer[fd] && read(fd, 0, 0) < 0)
