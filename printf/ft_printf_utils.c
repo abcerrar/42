@@ -53,7 +53,7 @@ int	print_unsigned_number(unsigned int number)
 {
 	int		i;
 	int		len;
-	char	str_num[20];
+	char	str_num[10];
 
 	len = num_len(number, 10, 0);
 	i = len - 1;
@@ -71,8 +71,8 @@ int	print_hex(unsigned long num, int mayus, int is_long)
 {
 	int		i;
 	int		len;
-	char	str_num[12];
-	char	base[16];
+	char	str_num[16];
+	char	base[17];
 
 	if (num == 0)
 	{

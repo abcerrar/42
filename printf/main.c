@@ -4,17 +4,11 @@
 int main(int argc, char **argv)
 {
 
-	void *ptr;
-	if (argc < 2)
-		return 0;
-
-	printf("Printf:\n");
-	int n1 = printf("\x01\x02\a\v\b\f\r\n");
-	printf("ft_printf:\n");
-	int n2 = ft_printf("\x01\x02\a\v\b\f\r\n");
-	printf("\nn1: %d\nn2: %d\n", n1, n2);
-
 	
+	ft_printf("ajkd\n", "\x01\x02\a\v\b\f\r\n");
+	printf("ajkd\n", "\x01\x02\a\v\b\f\r\n");
+
+
 	/*
 	if (argc < 3 || ft_strlen(argv[1]) != 1)
 	{
