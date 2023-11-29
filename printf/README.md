@@ -1,6 +1,6 @@
-# Printf Project - 42 Madrid
+# Printf Project - 42
 
-The Printf project at 42 Madrid requires recreating the printf function in C.
+The Printf project at 42 requires recreating the printf function in C.
 
 ## Overview
 
