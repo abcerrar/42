@@ -17,20 +17,22 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	total_length;
 	char	*str;
 	size_t	i;
+	size_t	len_s1;
 
+	len_s1 = ft_strlen(s1);
 	if (!s1 || !s2)
 		return (NULL);
 	i = -1;
-	total_length = ft_strlen(s1) + ft_strlen(s2) + 1;
+	total_length = len_s1 + ft_strlen(s2) + 1;
 	str = (char *)malloc(total_length);
 	if (!str)
 		return (NULL);
 	while (++i < total_length)
 	{
-		if (i < ft_strlen(s1))
+		if (i < len_s1)
 			str[i] = s1[i];
 		else
-			str[i] = s2[i - ft_strlen(s1)];
+			str[i] = s2[i - len_s1];
 	}
 	return (str);
 }
