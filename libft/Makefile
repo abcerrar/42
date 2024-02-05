@@ -34,7 +34,9 @@ SRC = ft_isalpha.c\
 	ft_putnbr_fd.c\
 	ft_strlcpy.c\
 	ft_strlcat.c\
-	ft_strncmp.c
+	ft_strncmp.c\
+	ft_printf.c\
+	ft_printf_utils.c
 SRC_BONUS = ft_lstnew_bonus.c\
 	ft_lstadd_front_bonus.c\
 	ft_lstsize_bonus.c\
