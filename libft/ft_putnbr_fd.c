@@ -37,7 +37,7 @@ int	check_negative(int n, int fd)
 	return (n);
 }
 
-int	num_len(int n)
+int	num_length(int n)
 {
 	int	len;
 
@@ -61,7 +61,7 @@ void	ft_putnbr_fd(int n, int fd)
 	if (special(n, fd))
 		return ;
 	n = check_negative(n, fd);
-	len = num_len(n);
+	len = num_length(n);
 	i = len - 1;
 	while (i >= 0)
 	{
