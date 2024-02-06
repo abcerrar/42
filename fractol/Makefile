@@ -4,7 +4,7 @@ CFLAGS =
 
 #Sources
 SRC_PATH = src/
-SRC = main.c
+SRC = main.c julia.c
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 
 #MiniLibx
