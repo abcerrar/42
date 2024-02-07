@@ -1,7 +1,7 @@
 #include "fractol.h"
 #define MAX_ITER 100
 
-void map_to_complex(void *mlx, void *win, int dimensions[], double c[], int max_iter);
+void draw_julia(void *mlx, void *img, double cr, double ci, int dimensions[]);
 
 typedef struct s_data{
 	void *img;
@@ -11,6 +11,7 @@ typedef struct s_data{
 	int endian;
 } t_data;
 
+/*
 int julia_escape_time(double cr, double ci, double zr, double zi) {
     int n = 0;
     while (zr*zr + zi*zi <= 4 && n < MAX_ITER) {
@@ -34,6 +35,7 @@ void draw_julia_set(void *mlx, void *win, double cr, double ci) {
         }
     }
 }
+*/
 /*
 void	my_mlx_pixel_put(t_data *img, int x, int y, int color)
 {
@@ -50,7 +52,7 @@ int	main(int argc, char **argv)
 	void	*mlx_win;
 	t_data	img;
 	int ancho = 800;
-	int largo = 600;
+	int largo = 800;
 
 	mlx = mlx_init();
 	//mlx_win = mlx_new_window(mlx, ancho, largo, "test1");
@@ -66,8 +68,9 @@ int	main(int argc, char **argv)
     draw_julia_set(mlx, win, ft_atoi(argv[1]), 0.27015);
 	*/
 
-	void *win = mlx_new_window(mlx, 600, 600, "title");
-	map_to_complex(mlx, win, (int[]){600, 600}, (double[]){1, 1}, 100);
+	void *win = mlx_new_window(mlx, ancho, largo, "title");
+	int dimensiones[] = {ancho, largo};
+	draw_julia(mlx, win, -0.7, 0.27015, dimensiones);
 
 
 
