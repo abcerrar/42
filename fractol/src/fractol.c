@@ -19,11 +19,14 @@ void choose_fractal(t_fractal *fractal)
 	fractal -> win = mlx_new_window(fractal -> mlx, WIDTH, HEIGHT, fractal -> name);
 	create_img(fractal);
 	fractal -> max_iter = MAX_ITER;
+	//Hacer el zoom infinito
 	fractal -> zoom = 0.6;
 	if (ft_strncmp("Julia", fractal -> name, 6) == 0 || ft_strncmp("j", fractal -> name, 2) == 0)
 	{
 		fractal -> cr = -0.7;
 		fractal -> ci = 0.27015;
+		fractal -> center_x = WIDTH / 2;
+		fractal -> center_y = HEIGHT / 2;
 		draw_julia(fractal);
 	}
 	
@@ -32,14 +35,19 @@ void choose_fractal(t_fractal *fractal)
 int tecla(int keycode, t_fractal *fractal)
 {
 	printf("keycode: %d\n", keycode);
-	if (keycode == KEY_UP)
+	if (keycode == PLUS)
 		fractal -> zoom = fractal -> zoom - 0.01;
-	if (keycode == KEY_DOWN)
+	if (keycode == MINUS)
 		fractal -> zoom = fractal -> zoom + 0.01;
 	if (keycode == KEY_RIGTH)
-		fractal -> cr = fractal -> cr + 0.01;
+		//fractal -> cr = fractal -> cr + 0.01;
+		fractal -> center_x = fractal -> center_x - 3.0;
 	if (keycode == KEY_LEFT)
-		fractal -> cr = fractal -> cr - 0.01;
+		fractal -> center_x = fractal -> center_x + 3.0;
+	if (keycode == KEY_UP)
+		fractal -> center_y = fractal -> center_y + 3.0;
+	if (keycode == KEY_DOWN)
+		fractal -> center_y = fractal -> center_y - 3.0;
 	if (keycode == ESC)
 		mlx_destroy_window(fractal -> mlx, fractal -> win);
 	draw_julia(fractal);
@@ -62,16 +70,13 @@ int raton(int button, int x, int y, t_fractal *fractal)
 }
 
 
-/*
+
 int raton_movimiento(int x, int y, t_fractal *fractal)
 {
+	
 	return (0);
 }
-*/
-int	next_frame(t_fractal *fractal)
-{
-	
-}
+
 
 int main(int argc, char **argv)
 {
@@ -87,11 +92,11 @@ int main(int argc, char **argv)
 	choose_fractal(&fractal);
 
 	mlx_hook(fractal.win, 2, 1L<<0, tecla, &fractal);
-	//mlx_hook(fractal.win, 4, 1L<<2, raton, &fractal);
-	//mlx_hook(fractal.win, 6, 1L<<6, raton_movimiento, &fractal);
+	mlx_hook(fractal.win, 4, 1L<<2, raton, &fractal);
+	mlx_hook(fractal.win, 6, 1L<<6, raton_movimiento, &fractal);
 	mlx_mouse_hook(fractal.win, raton, &fractal);
 
-	mlx_loop_hook(fractal.mlx, next_frame, &fractal);
+	//mlx_loop_hook(fractal.mlx, next_frame, &fractal);
 	mlx_loop(fractal.mlx);
 	return (0);
 }

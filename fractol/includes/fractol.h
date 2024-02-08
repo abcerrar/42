@@ -21,11 +21,13 @@ typedef struct s_fractal
 	double	zi;
 	double	cr;
 	double	ci;
+	double	center_x;
+	double	center_y;
 	double	zoom;
 }	t_fractal;
 
 #define WIDTH 800
-#define HEIGHT 800
+#define HEIGHT 600
 #define MAX_ITER 100
 
 

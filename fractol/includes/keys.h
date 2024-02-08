@@ -7,5 +7,7 @@
 #define KEY_RIGTH 65363
 #define KEY_LEFT 65361
 #define ESC 65307
+#define PLUS 43
+#define MINUS 45
 
 #endif
