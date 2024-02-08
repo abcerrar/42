@@ -1,6 +1,6 @@
 NAME = fractol
 CC = gcc
-CFLAGS = 
+CFLAGS = -fsanitize=address -g
 
 #Sources
 SRC_PATH = src/
