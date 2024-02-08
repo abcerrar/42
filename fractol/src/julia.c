@@ -1,59 +1,42 @@
 #include "fractol.h"
 
-#define MAX_ITER 100
-typedef struct s_fractal{
-	char *name;
-	int x;
-	int y;
-	double cx;
-	double cy;
-	int max_iterations;
-}	t_fractal; 
-
-int julia_escape_time(double cr, double ci, double zr, double zi)
+int julia_escape_time(t_fractal f)
 {
 	int n;
-	int max_iter;
 	double tmp;
 
-	max_iter = 100;
 	n= 0;
-    while (zr*zr + zi*zi <= 4 && n < max_iter) {
-        tmp = zr*zr - zi*zi + cr;
-        zi = 2*zr*zi + ci;
-        zr = tmp;
+    while (f.zr * f.zr + f.zi * f.zi <= 4 && n < f.max_iter) {
+        tmp = f.zr * f.zr - f.zi * f.zi + f.cr;
+        f.zi = 2 * f.zr * f.zi + f.ci;
+        f.zr = tmp;
         n++;
     }
     return n;
 }
 
-void draw_julia(void *mlx, void *win, double cr, double ci, int dimensions[])
+void draw_julia(t_fractal *fractal)
 {
 	int	x;
 	int	y;
 	int n;
-	double zr;
-	double zi;
 
 	x = -1;
 	y = -1;
-
-	while (++x < dimensions[0])
+	while (++x < WIDTH)
 	{
 		y = -1;
-		while (++y < dimensions[1])
+		while (++y < HEIGHT)
 		{
 			//Mapear coordenadas de px a complejos
-			zr = (x - dimensions[0] / 2.0) / 200;
-			zi = (y - dimensions[1] / 2.0) / 200;
-//			zr = (x - dimensions[0] / 2) * 4.0 / dimensions[0];
-//          zi = (y - dimensions[1] / 2) * 4.0 / dimensions[1];
-			n = julia_escape_time(cr, ci, zr, zi);
+			fractal -> zr = (x - WIDTH / 2.0) * 0.8 / 200;
+			fractal -> zi = (y - HEIGHT / 2.0) * 0.8 / 200;
+			n = julia_escape_time(*fractal);
 //          int color = (n == 100) ? 0 : 0xFFFFFF * n / 100;
 			int color;
 			if (n == 100) color = 0x00FF0000;
 			else color = 0x0000FF00;
-			mlx_pixel_put(mlx, win, x, y, color);
+			mlx_pixel_put(fractal -> mlx, fractal -> win, x, y, color);
 		}
 	}
 }
