@@ -9,5 +9,6 @@
 #define ESC 65307
 #define PLUS 43
 #define MINUS 45
+#define RESET 114
 
 #endif

@@ -17,7 +17,6 @@ typedef struct s_fractal
 	int		x;
 	int		y;
 	int		max_iter;
-	int		pressed;
 	double	center_x;
 	double	center_y;
 	double	zr;
@@ -28,7 +27,7 @@ typedef struct s_fractal
 }	t_fractal;
 
 #define WIDTH 800
-#define HEIGHT 600
+#define HEIGHT 800
 #define MAX_ITER 60
 
 

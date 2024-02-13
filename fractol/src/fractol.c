@@ -19,10 +19,9 @@ void choose_fractal(t_fractal *fractal)
 	fractal -> win = mlx_new_window(fractal -> mlx, WIDTH, HEIGHT, fractal -> name);
 	create_img(fractal);
 	fractal -> max_iter = MAX_ITER;
-	//Hacer el zoom infinito
-	fractal -> zoom = 0.6;
 	if (ft_strncmp("Julia", fractal -> name, 6) == 0 || ft_strncmp("j", fractal -> name, 2) == 0)
 	{
+		fractal -> zoom = 2.5;
 		fractal -> cr = -0.7;
 		fractal -> ci = 0.27015;
 		fractal->center_x = WIDTH / 2;
@@ -35,10 +34,12 @@ void choose_fractal(t_fractal *fractal)
 int tecla(int keycode, t_fractal *f)
 {
 	printf("keycode: %d\n", keycode);
+	//	ZOOM
 	if (keycode == PLUS)
-		f->zoom = f->zoom - 0.01;
+		f->zoom = f->zoom - 0.1;
 	if (keycode == MINUS)
-		f->zoom = f->zoom + 0.01;
+		f->zoom = f->zoom + 0.1;
+	//	MOVEMENT
 	if (keycode == KEY_RIGTH)
 		f->cr = f->cr + 0.01;
 		//f->center_x -= 3.0;
@@ -49,28 +50,39 @@ int tecla(int keycode, t_fractal *f)
 		f->center_y += 3.0;
 	if (keycode == KEY_DOWN)
 		f->center_y -= 3.0;
+	//	EXIT
 	if (keycode == ESC)
 		mlx_destroy_window(f -> mlx, f -> win);
+	//	RESET
+	if (keycode == RESET)
+	{
+		f -> zoom = 2.5;
+		f -> cr = -0.7;
+		f -> ci = 0.27015;
+		f->center_x = WIDTH / 2;
+		f->center_y = HEIGHT / 2;
+	}
 	draw_julia(f);
 	return (0);
 }
 
-int raton(int button, int x, int y, t_fractal *fractal)
+int raton(int button, int x, int y, t_fractal *f)
 {
 	if (button == 4)
-		fractal -> zoom = fractal -> zoom - 0.01;
+	{
+		double distancia = x - f->center_x;
+		printf("Distancia: %f\n", distancia);
+		f->center_x -= distancia * 0.07;
+		f->zoom = f->zoom - 0.1;
+	}
 	if (button == 5)
-		fractal -> zoom = fractal -> zoom + 0.01;
-
+		f->zoom = f->zoom + 0.1;
 	if (button == 1)
-		fractal -> pressed = 1;
-	else
-		fractal -> pressed = 0;
-	//printf("Button: %d\n", button);
-	//printf("x: %d\n", x);
-	//printf("y: %d\n", y);
-	draw_julia(fractal);
-
+	{
+		printf("x: %d \n", x);
+		printf("y: %d \n", y);
+	}
+	draw_julia(f);
 	return (0);
 }
 
@@ -78,10 +90,6 @@ int raton(int button, int x, int y, t_fractal *fractal)
 
 int raton_movimiento(int x, int y, t_fractal *fractal)
 {
-	if (fractal -> pressed == 1)
-	{
-
-	}
 	return (0);
 }
 
