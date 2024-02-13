@@ -6,7 +6,7 @@ int julia_escape_time(t_fractal f)
 	int n;
 	double tmp;
 
-	n= 0;
+	n = 0;
     while (f.zr * f.zr + f.zi * f.zi <= 4.0 && n < f.max_iter) {
         tmp = f.zr * f.zr - f.zi * f.zi + f.cr;
         f.zi = 2 * f.zr * f.zi + f.ci;
@@ -39,12 +39,10 @@ void draw_julia(t_fractal *f)
 			f -> zr = (f->x - f->center_x) * f->zoom / 200;
 			f -> zi = (f->y - f->center_y) * f->zoom / 200;
 			n = julia_escape_time(*f);
-//          int color = (n == 100) ? 0 : 0xFFFFFF * n / 100;
 			int color;
 			if (n == f -> max_iter) color = 0;
 			else color = 0xFFFFFF * n / 100;
 			my_mlx_pixel_put(f, color);
-			//mlx_pixel_put(f -> mlx, f -> win, f->x, f->y, color);
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);

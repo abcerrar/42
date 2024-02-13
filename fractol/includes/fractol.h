@@ -17,18 +17,19 @@ typedef struct s_fractal
 	int		x;
 	int		y;
 	int		max_iter;
+	int		pressed;
+	double	center_x;
+	double	center_y;
 	double	zr;
 	double	zi;
 	double	cr;
 	double	ci;
-	double	center_x;
-	double	center_y;
 	double	zoom;
 }	t_fractal;
 
 #define WIDTH 800
 #define HEIGHT 600
-#define MAX_ITER 100
+#define MAX_ITER 60
 
 
 void draw_julia(t_fractal *fractal);

@@ -25,32 +25,33 @@ void choose_fractal(t_fractal *fractal)
 	{
 		fractal -> cr = -0.7;
 		fractal -> ci = 0.27015;
-		fractal -> center_x = WIDTH / 2;
-		fractal -> center_y = HEIGHT / 2;
+		fractal->center_x = WIDTH / 2;
+		fractal->center_y = HEIGHT / 2;
 		draw_julia(fractal);
 	}
 	
 }
 
-int tecla(int keycode, t_fractal *fractal)
+int tecla(int keycode, t_fractal *f)
 {
 	printf("keycode: %d\n", keycode);
 	if (keycode == PLUS)
-		fractal -> zoom = fractal -> zoom - 0.01;
+		f->zoom = f->zoom - 0.01;
 	if (keycode == MINUS)
-		fractal -> zoom = fractal -> zoom + 0.01;
+		f->zoom = f->zoom + 0.01;
 	if (keycode == KEY_RIGTH)
-		//fractal -> cr = fractal -> cr + 0.01;
-		fractal -> center_x = fractal -> center_x - 3.0;
+		f->cr = f->cr + 0.01;
+		//f->center_x -= 3.0;
 	if (keycode == KEY_LEFT)
-		fractal -> center_x = fractal -> center_x + 3.0;
+		f->cr = f->cr - 0.01;
+		//f->center_x += 3.0;
 	if (keycode == KEY_UP)
-		fractal -> center_y = fractal -> center_y + 3.0;
+		f->center_y += 3.0;
 	if (keycode == KEY_DOWN)
-		fractal -> center_y = fractal -> center_y - 3.0;
+		f->center_y -= 3.0;
 	if (keycode == ESC)
-		mlx_destroy_window(fractal -> mlx, fractal -> win);
-	draw_julia(fractal);
+		mlx_destroy_window(f -> mlx, f -> win);
+	draw_julia(f);
 	return (0);
 }
 
@@ -61,9 +62,13 @@ int raton(int button, int x, int y, t_fractal *fractal)
 	if (button == 5)
 		fractal -> zoom = fractal -> zoom + 0.01;
 
-	printf("Button: %d\n", button);
-	printf("x: %d\n", x);
-	printf("y: %d\n", y);
+	if (button == 1)
+		fractal -> pressed = 1;
+	else
+		fractal -> pressed = 0;
+	//printf("Button: %d\n", button);
+	//printf("x: %d\n", x);
+	//printf("y: %d\n", y);
 	draw_julia(fractal);
 
 	return (0);
@@ -73,7 +78,10 @@ int raton(int button, int x, int y, t_fractal *fractal)
 
 int raton_movimiento(int x, int y, t_fractal *fractal)
 {
-	
+	if (fractal -> pressed == 1)
+	{
+
+	}
 	return (0);
 }
 
