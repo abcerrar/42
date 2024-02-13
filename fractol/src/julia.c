@@ -36,8 +36,8 @@ void draw_julia(t_fractal *f)
 		while (++f->y < HEIGHT)
 		{
 			//Mapear coordenadas de px a complejos
-			f->zr = (f->x - f->center_x) * (f->zoom / WIDTH);// * f->zoom / 200;
-			f->zi = (f->y - f->center_y) * (f->zoom / HEIGHT);// * f->zoom / 200;
+			f->zr = f->center_x + (f->x - WIDTH / 2) * (f->zoom / WIDTH);// * f->zoom / 200;
+			f->zi = f->center_y - (f->y - HEIGHT / 2) * (f->zoom / HEIGHT);// * f->zoom / 200;
 			n = julia_escape_time(*f);
 			int color;
 			if (n == f->max_iter) color = 0;

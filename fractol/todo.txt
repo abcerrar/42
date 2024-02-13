@@ -1,2 +1,3 @@
 optimizar funcion reset
 ordenar archivos
+hacer zoom infinito

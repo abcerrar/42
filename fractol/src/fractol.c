@@ -24,8 +24,8 @@ void choose_fractal(t_fractal *fractal)
 		fractal -> zoom = 2.5;
 		fractal -> cr = -0.7;
 		fractal -> ci = 0.27015;
-		fractal->center_x = WIDTH / 2;
-		fractal->center_y = HEIGHT / 2;
+		fractal->center_x = 0.0;
+		fractal->center_y = 0.0;
 		draw_julia(fractal);
 	}
 	
@@ -47,9 +47,9 @@ int tecla(int keycode, t_fractal *f)
 		f->cr = f->cr - 0.01;
 		//f->center_x += 3.0;
 	if (keycode == KEY_UP)
-		f->center_y += 3.0;
+		f->center_y += 0.05;
 	if (keycode == KEY_DOWN)
-		f->center_y -= 3.0;
+		f->center_y -= 0.05;
 	//	EXIT
 	if (keycode == ESC)
 		mlx_destroy_window(f -> mlx, f -> win);
@@ -59,24 +59,42 @@ int tecla(int keycode, t_fractal *f)
 		f -> zoom = 2.5;
 		f -> cr = -0.7;
 		f -> ci = 0.27015;
-		f->center_x = WIDTH / 2;
-		f->center_y = HEIGHT / 2;
+		f->center_x = 0.0;
+		f->center_y = 0.0;
 	}
 	draw_julia(f);
 	return (0);
 }
 
+void	zoom(t_fractal f, double zoom_level)
+{
+	
+}
+
 int raton(int button, int x, int y, t_fractal *f)
 {
+	//Calcular la coordenada compleja de la posicion del raton antes y despues del 
+	//zoom y luego ajustar el centro a esas coordenadas.
+
+	double	complex_x = f->center_x + (((double)x - WIDTH / 2) * (f->zoom / WIDTH));
+	double	new_complex_x; 
+	double	complex_y = f->center_y + (((double)y - HEIGHT / 2) * (f->zoom / HEIGHT));
+	double	new_complex_y; 
+
 	if (button == 4)
 	{
-		double distancia = x - f->center_x;
-		printf("Distancia: %f\n", distancia);
-		f->center_x -= distancia * 0.07;
-		f->zoom = f->zoom - 0.1;
+		f->center_x = ((double)x - WIDTH / 2) * (f->zoom / WIDTH);
+		printf("Distancia: %f\n", f->center_x);
+		f->zoom -= 0.1;
+		new_complex_x = f->center_x + (((double)x - WIDTH / 2) * (f->zoom / WIDTH));
+		new_complex_y = f->center_y + (((double)y - HEIGHT / 2) * (f->zoom / HEIGHT));
+		f->center_x += complex_x - new_complex_x;
+		f->center_y -= complex_y - new_complex_y;
 	}
 	if (button == 5)
 		f->zoom = f->zoom + 0.1;
+
+	//	COORDENADAS
 	if (button == 1)
 	{
 		printf("x: %d \n", x);
