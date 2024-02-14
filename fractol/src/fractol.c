@@ -13,20 +13,20 @@ void	create_img(t_fractal *fractal){
 	printf("%d\n", WIDTH);
 }
 
-void choose_fractal(t_fractal *fractal)
+void choose_fractal(t_fractal *f)
 {
-	fractal -> mlx = mlx_init();
-	fractal -> win = mlx_new_window(fractal -> mlx, WIDTH, HEIGHT, fractal -> name);
-	create_img(fractal);
-	fractal -> max_iter = MAX_ITER;
-	if (ft_strncmp("Julia", fractal -> name, 6) == 0 || ft_strncmp("j", fractal -> name, 2) == 0)
+	f->mlx = mlx_init();
+	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, f->name);
+	create_img(f);
+	f->max_iter = MAX_ITER;
+	if (ft_strncmp("Julia", f->name, 6) == 0 || ft_strncmp("j", f->name, 2) == 0)
 	{
-		fractal -> zoom = 2.5;
-		fractal -> cr = -0.7;
-		fractal -> ci = 0.27015;
-		fractal->center_x = 0.0;
-		fractal->center_y = 0.0;
-		draw_julia(fractal);
+		f->zoom = 2.5;
+		f->cr = -0.7;
+		f->ci = 0.27015;
+		f->center_x = 0.0;
+		f->center_y = 0.0;
+		draw_julia(f);
 	}
 	
 }
@@ -66,11 +66,6 @@ int tecla(int keycode, t_fractal *f)
 	return (0);
 }
 
-void	zoom(t_fractal f, double zoom_level)
-{
-	
-}
-
 int raton(int button, int x, int y, t_fractal *f)
 {
 	//Calcular la coordenada compleja de la posicion del raton antes y despues del 
@@ -82,24 +77,13 @@ int raton(int button, int x, int y, t_fractal *f)
 	double	new_complex_y; 
 
 	if (button == 4)
-	{
-		f->center_x = ((double)x - WIDTH / 2) * (f->zoom / WIDTH);
-		printf("Distancia: %f\n", f->center_x);
-		f->zoom -= 0.1;
-		new_complex_x = f->center_x + (((double)x - WIDTH / 2) * (f->zoom / WIDTH));
-		new_complex_y = f->center_y + (((double)y - HEIGHT / 2) * (f->zoom / HEIGHT));
-		f->center_x += complex_x - new_complex_x;
-		f->center_y -= complex_y - new_complex_y;
-	}
+		f->zoom *= 0.9;
 	if (button == 5)
-		f->zoom = f->zoom + 0.1;
-
-	//	COORDENADAS
-	if (button == 1)
-	{
-		printf("x: %d \n", x);
-		printf("y: %d \n", y);
-	}
+		f->zoom /= 0.9;
+	new_complex_x = f->center_x + (((double)x - WIDTH / 2) * (f->zoom / WIDTH));
+	new_complex_y = f->center_y + (((double)y - HEIGHT / 2) * (f->zoom / HEIGHT));
+	f->center_x += complex_x - new_complex_x;
+	f->center_y -= complex_y - new_complex_y;
 	draw_julia(f);
 	return (0);
 }
