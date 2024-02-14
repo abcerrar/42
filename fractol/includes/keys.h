@@ -10,5 +10,6 @@
 #define PLUS 43
 #define MINUS 45
 #define RESET 114
+#define SHIFT 65505
 
 #endif

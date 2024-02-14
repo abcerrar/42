@@ -15,14 +15,6 @@ int julia_escape_time(t_fractal f)
     }
     return n;
 }
-void	my_mlx_pixel_put(t_fractal *f, int color)
-{
-	char	*dst;
-	// WIDTH * 4 = line_length
-	// Last 4 = bytes_per_pixel / 8
-	dst = f->addr + (f->y * WIDTH * 4 + f->x * 4);
-	*(unsigned int*)dst = color;
-}
 
 void draw_julia(t_fractal *f)
 {
@@ -36,14 +28,16 @@ void draw_julia(t_fractal *f)
 		while (++f->y < HEIGHT)
 		{
 			//Mapear coordenadas de px a complejos
-			f->zr = f->center_x + (f->x - WIDTH / 2) * (f->zoom / WIDTH);// * f->zoom / 200;
-			f->zi = f->center_y - (f->y - HEIGHT / 2) * (f->zoom / HEIGHT);// * f->zoom / 200;
+			f->zr = f->center_x + (f->x - WIDTH / 2) * (f->zoom / WIDTH);
+			f->zi = f->center_y - (f->y - HEIGHT / 2) * (f->zoom / HEIGHT);
 			n = julia_escape_time(*f);
 			int color;
 			if (n == f->max_iter) color = 0;
-			else color = 0xFFFFFF * n / 100;
+			else color = 0x0F0000 * n / 100;
 			my_mlx_pixel_put(f, color);
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
 }
+
+

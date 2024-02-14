@@ -17,6 +17,7 @@ typedef struct s_fractal
 	int		x;
 	int		y;
 	int		max_iter;
+	int		shift_pressed;
 	double	center_x;
 	double	center_y;
 	double	zr;
@@ -24,6 +25,8 @@ typedef struct s_fractal
 	double	cr;
 	double	ci;
 	double	zoom;
+	double	zoom_factor;
+	double	movement_speed;
 }	t_fractal;
 
 #define WIDTH 800
@@ -31,6 +34,18 @@ typedef struct s_fractal
 #define MAX_ITER 60
 
 
-void draw_julia(t_fractal *fractal);
+void	draw_julia(t_fractal *fractal);
+
+//Utils
+void	my_mlx_pixel_put(t_fractal *f, int color);
+void	init_fractal(t_fractal *f);
+void	create_img(t_fractal *fractal);
+void	init_fractal_values(t_fractal *f);
+
+//Events
+int raton_movimiento(int x, int y, t_fractal *fractal);
+int key_press(int keycode, t_fractal *f);
+int raton(int button, int x, int y, t_fractal *f);
+int key_release(int keycode, t_fractal *f);
 
 #endif

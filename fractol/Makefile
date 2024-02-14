@@ -4,7 +4,10 @@ CFLAGS = -fsanitize=address -g
 
 #Sources
 SRC_PATH = src/
-SRC = fractol.c julia.c
+SRC =	fractol.c\
+		julia.c\
+		utils.c\
+		events.c
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 
 #MiniLibx
