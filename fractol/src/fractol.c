@@ -6,11 +6,8 @@ void choose_fractal(t_fractal *f)
 	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, f->name);
 	create_img(f);
 	f->max_iter = MAX_ITER;
-	if (ft_strncmp("Julia", f->name, 6) == 0 || ft_strncmp("j", f->name, 2) == 0)
-	{
-		init_fractal_values(f);
-		draw_julia(f);
-	}
+	init_fractal_values(f);
+	draw_julia(f);
 	
 }
 

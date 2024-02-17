@@ -36,8 +36,16 @@ void	init_fractal_values(t_fractal *f)
 		f->zoom = 2.5;
 		f->zoom_factor = 0.9;
 		f->movement_speed = 0.03;
-		f->cr = -0.7;
-		f->ci = 0.27015;
+		if (ft_strncmp(f->name, "j", 2) == 0)
+		{
+			f->cr = -0.7;
+			f->ci = 0.27015;
+		}
+		if (ft_strncmp(f->name, "m", 2) == 0)
+		{
+			f->cr = -0.8;
+			f->ci = 0.0;
+		}
 		f->center_x = 0.0;
 		f->center_y = 0.0;
 }
