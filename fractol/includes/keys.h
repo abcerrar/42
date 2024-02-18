@@ -11,5 +11,9 @@
 #define MINUS 45
 #define RESET 114
 #define SHIFT 65505
+#define ONE 49
+#define TWO 50
+#define THREE 51
+#define FOUR 52
 
 #endif

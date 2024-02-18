@@ -19,6 +19,7 @@ void	init_fractal(t_fractal *f)
 	f->x = 0;
 	f->y = 0;
 	f->shift_pressed = 0;
+	f->palette = 0;
 	f->color_position = 0;
 	f->max_iter = 0;
 	f->center_x = 0.0;
@@ -40,7 +41,8 @@ void	init_fractal_values(t_fractal *f)
 		f->max_iter = MAX_ITER;
 		f->center_x = 0.0;
 		f->center_y = 0.0;
-		f->color_position = 0;
+		f->color_position = 1;
+		f->palette = 0;
 }
 
 void	create_img(t_fractal *fractal)

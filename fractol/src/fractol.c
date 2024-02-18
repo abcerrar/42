@@ -21,6 +21,7 @@ void choose_fractal(t_fractal *f)
 	draw_fractal(f);
 }
 
+
 int main(int argc, char **argv)
 {
 	

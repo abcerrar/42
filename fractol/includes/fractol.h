@@ -19,6 +19,7 @@ typedef struct s_fractal
 	int		max_iter;
 	int		shift_pressed;
 	int		color_position;
+	int		palette;
 	double	center_x;
 	double	center_y;
 	double	zr;

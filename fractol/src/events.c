@@ -50,9 +50,9 @@ void	init_julia_movements(t_fractal *f, int keycode)
 int key_press(int keycode, t_fractal *f)
 {
 	printf("keycode: %d\n", keycode);
-	if (keycode == KEY_UP || keycode == KEY_RIGTH)
+	if (keycode == KEY_UP || keycode == KEY_RIGTH || keycode == PLUS)
 		f->color_position++;
-	if (keycode == KEY_DOWN || keycode == KEY_LEFT)
+	if (keycode == KEY_DOWN || keycode == KEY_LEFT || keycode == MINUS)
 		f->color_position--;
 	//	ZOOM
 	if (keycode == PLUS)
@@ -79,6 +79,17 @@ int key_press(int keycode, t_fractal *f)
 	//	RESET
 	if (keycode == RESET)
 		init_fractal_values(f);
+	//	CHOOSE PALETTE
+	if (keycode == ONE)
+		f->palette = 0;
+	if (keycode == TWO)
+		f->palette = 1;
+	if (keycode == THREE)
+		f->palette = 2;
+	if (keycode == FOUR)
+		f->palette = 3;
+
+	printf("%d\n", f->color_position);
 	draw_fractal(f);
 	if (keycode == SHIFT)
 		f->shift_pressed = 1;
