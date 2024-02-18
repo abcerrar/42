@@ -14,6 +14,15 @@ int	get_palette(int palette, int color)
 			//Blue
 			0x000002, 0x000003, 0x000004,// 0x000004,
 			0x000004, 0x000003, 0x000002, 0x000001
+		},
+			//Black and white
+		{
+			0x010101, 0x020202, 0x030303, 0x040404,
+			0x040404, 0x030303, 0x020202, 0x010101,
+			0x020202, 0x030303, 0x040404,
+			0x040404, 0x030303, 0x020202, 0x010101,
+			0x020202, 0x030303, 0x040404,
+			0x040404, 0x030303, 0x020202, 0x010101
 		}
 	};
 	
@@ -38,5 +47,5 @@ int	get_color(t_fractal *f)
 	if (f->color_position <= 0)
 		f->color_position = palette_size - 1;
 
-	return (get_palette(0, f->color_position));
+	return (get_palette(f->palette - 3, f->color_position));
 }

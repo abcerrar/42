@@ -1,4 +1,5 @@
 arreglar funcion reset
+cambiar la paleta a malloc para mayor eficiencia
 ordenar archivos
 solo funciona en ventanas cuadradas
 hacer que se pueda:

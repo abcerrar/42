@@ -88,8 +88,9 @@ int key_press(int keycode, t_fractal *f)
 		f->palette = 2;
 	if (keycode == FOUR)
 		f->palette = 3;
+	if (keycode == FIVE)
+		f->palette = 4;
 
-	printf("%d\n", f->color_position);
 	draw_fractal(f);
 	if (keycode == SHIFT)
 		f->shift_pressed = 1;
