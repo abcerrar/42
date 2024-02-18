@@ -1,2 +1,7 @@
-optimizar funcion reset
+arreglar funcion reset
 ordenar archivos
+solo funciona en ventanas cuadradas
+hacer que se pueda:
+	- Cerrar con la cruz.
+	- Cambio a otra ventana, minimización...
+	- Hacer que ESC salga de manera limpia.

@@ -7,6 +7,7 @@ SRC_PATH = src/
 SRC =	fractol.c\
 		julia.c\
 		utils.c\
+		colors.c\
 		events.c
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 

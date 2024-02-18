@@ -16,7 +16,7 @@ int julia_escape_time(t_fractal f)
     return n;
 }
 
-void draw_julia(t_fractal *f)
+void draw_fractal(t_fractal *f)
 {
 	int n;
 
@@ -30,11 +30,10 @@ void draw_julia(t_fractal *f)
 			//Mapear coordenadas de px a complejos
 			f->zr = f->center_x + (f->x - WIDTH / 2) * (f->zoom / WIDTH);
 			f->zi = f->center_y - (f->y - HEIGHT / 2) * (f->zoom / HEIGHT);
-			if (ft_strncmp("j", f->name, 2) || ft_strncmp("Julia", f->name, 6))
-				n = julia_escape_time(*f);
+			n = julia_escape_time(*f);
 			int color;
 			if (n == f->max_iter) color = 0;
-			else color = 0x0F0000 * n / 100;
+			else color = get_color(f) * n;
 			my_mlx_pixel_put(f, color);
 		}
 	}

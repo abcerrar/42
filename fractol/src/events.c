@@ -18,7 +18,13 @@ int raton(int button, int x, int y, t_fractal *f)
 	new_complex_y = f->center_y + (((double)y - HEIGHT / 2) * (f->zoom / HEIGHT));
 	f->center_x += complex_x - new_complex_x;
 	f->center_y -= complex_y - new_complex_y;
-	draw_julia(f);
+	draw_fractal(f);
+
+	//posiciones
+	if (button == 1)
+	{
+		printf("x: %d\ny: %d\n", x, y);
+	}
 	return (0);
 }
 
@@ -39,12 +45,15 @@ void	init_julia_movements(t_fractal *f, int keycode)
 		f->ci += 0.01;
 	if (keycode == KEY_DOWN)
 		f->ci -= 0.01;
-	
 }
 
 int key_press(int keycode, t_fractal *f)
 {
 	printf("keycode: %d\n", keycode);
+	if (keycode == KEY_UP || keycode == KEY_RIGTH)
+		f->color_position++;
+	if (keycode == KEY_DOWN || keycode == KEY_LEFT)
+		f->color_position--;
 	//	ZOOM
 	if (keycode == PLUS)
 		f->zoom *= f->zoom_factor;
@@ -66,11 +75,11 @@ int key_press(int keycode, t_fractal *f)
 	}
 	//	EXIT
 	if (keycode == ESC)
-		mlx_destroy_window(f -> mlx, f -> win);
+		close_window(f);
 	//	RESET
 	if (keycode == RESET)
 		init_fractal_values(f);
-	draw_julia(f);
+	draw_fractal(f);
 	if (keycode == SHIFT)
 		f->shift_pressed = 1;
 	return (0);

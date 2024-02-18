@@ -5,10 +5,20 @@ void choose_fractal(t_fractal *f)
 	f->mlx = mlx_init();
 	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, f->name);
 	create_img(f);
-	f->max_iter = MAX_ITER;
 	init_fractal_values(f);
-	draw_julia(f);
+
+	if (ft_strncmp(f->name, "j", 2) == 0 || ft_strncmp(f->name, "Julia", 6) == 0)
+	{
+		f->cr = -0.7;
+		f->ci = 0.27015;
+	}
+	if (ft_strncmp(f->name, "m", 2) == 0 || ft_strncmp(f->name, "Mandelbrot", 11) == 0)
+	{
+		f->cr = -0.8;
+		f->ci = 0.0;
+	}
 	
+	draw_fractal(f);
 }
 
 int main(int argc, char **argv)
@@ -27,9 +37,8 @@ int main(int argc, char **argv)
 
 	mlx_hook(fractal.win, 2, 1L<<0, key_press, &fractal);
 	mlx_hook(fractal.win, 3, 1L<<1, key_release, &fractal);
-	mlx_hook(fractal.win, 4, 1L<<2, raton, &fractal);
-	mlx_hook(fractal.win, 6, 1L<<6, raton_movimiento, &fractal);
 	mlx_mouse_hook(fractal.win, raton, &fractal);
+	mlx_hook(fractal.win, 33, 1L<<0, close_window, &fractal);
 
 	mlx_loop(fractal.mlx);
 	return (0);
