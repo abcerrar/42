@@ -1,8 +1,15 @@
 arreglar funcion reset
 cambiar la paleta a malloc para mayor eficiencia
+añadir de nuevo las flags -Wall...
 ordenar archivos
 solo funciona en ventanas cuadradas
 hacer que se pueda:
 	- Cerrar con la cruz.
 	- Cambio a otra ventana, minimización...
 	- Hacer que ESC salga de manera limpia.
+
+Ideas para el tercer fractal:
+	- Fractal de Newton.
+	- Fractal de Buddhabrot
+	- Fractal de Lyapunov
+	- Fractal de Phoenix

@@ -33,6 +33,24 @@ void	init_fractal(t_fractal *f)
 	f->movement_speed = 0.0;
 }
 
+void draw_line(void *mlx_ptr, void *win_ptr, t_point p1, t_point p2, int color) {
+    int dx = p2.x - p1.x;
+    int dy = p2.y - p1.y;
+    int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+
+    float increment_x = (float)dx / (float)steps;
+    float increment_y = (float)dy / (float)steps;
+
+    float x = p1.x;
+    float y = p1.y;
+
+    for (int i = 0; i <= steps; i++) {
+        mlx_pixel_put(mlx_ptr, win_ptr, round(x), round(y), color);
+        x += increment_x;
+        y += increment_y;
+    }
+}
+
 void	init_fractal_values(t_fractal *f)
 {
 		f->zoom = 2.5;

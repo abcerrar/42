@@ -1,5 +1,6 @@
 #include "fractol.h"
 
+
 void choose_fractal(t_fractal *f)
 {
 	f->mlx = mlx_init();
@@ -16,6 +17,15 @@ void choose_fractal(t_fractal *f)
 	{
 		f->cr = -0.8;
 		f->ci = 0.0;
+	}
+	if (ft_strncmp(f->name, "s", 2) == 0)
+	{
+		//Using f->cr as DEPTH
+		t_point a = {WIDTH / 2, 100};
+    	t_point b = {100, HEIGHT - 100};
+	    t_point c = {WIDTH - 100, HEIGHT - 100};
+	    draw_sierpinski(f, a, b, c, MAX_DEPTH);
+		return ;
 	}
 	
 	draw_fractal(f);
