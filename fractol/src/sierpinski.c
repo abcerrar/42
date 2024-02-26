@@ -55,7 +55,6 @@ void draw_triangle(t_fractal *f, t_point a, t_point b, t_point c) {
 	draw_line(f->mlx, f->win, b, c, get_color(f) * 50);
 	draw_line(f->mlx, f->win, c, a, get_color(f) * 50);
 	fill_triangle2(*f, a, b, c);
-	printf("Dibujando un triangulo\n");
 }
 
 void draw_sierpinski(t_fractal *f, t_point a, t_point b, t_point c, int depth)

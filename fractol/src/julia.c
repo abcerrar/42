@@ -1,24 +1,14 @@
 #include "fractol.h"
 
-
 void	re_render(t_fractal *f)
 {
 	if (ft_strncmp(f->name, "j", 2) == 0 || ft_strncmp(f->name, "m", 2) == 0)
 		draw_fractal(f);
 	if (ft_strncmp(f->name, "s", 2) == 0)
 	{
-		t_point a = (t_point){WIDTH / 2 + f->center_x, 100 - f->center_y}; 
-		t_point b = (t_point){100 + f->center_x, HEIGHT - 100 - f->center_y}; 
-		t_point c = (t_point){WIDTH - 100 + f->center_x, HEIGHT - 100 - f->center_y}; 
-		/*
-		t_point a, b, c;
-		a.x = (a.x - f->center_x) * f->zoom + f->center_x;
-	    a.y = (a.y - f->center_y) * f->zoom + f->center_y;
-		b.x = (b.x - f->center_x) * f->zoom + f->center_x;
-		b.y = (b.y - f->center_y) * f->zoom + f->center_y;
-		c.x = (c.x - f->center_x) * f->zoom + f->center_x;
-		c.y = (c.y - f->center_y) * f->zoom + f->center_y;
-		*/
+		t_point a = (t_point){f->center_x,  -300 * f->zoom + f->center_y}; 
+		t_point b = (t_point){-300 * f->zoom + f->center_x, 300 * f->zoom + f->center_y}; 
+		t_point c = (t_point){300 * f->zoom + f->center_x, 300 * f->zoom + f->center_y}; 
 		mlx_clear_window(f->mlx, f->win);
 	    draw_sierpinski(f, a, b, c, (int)f->cr);
 	}

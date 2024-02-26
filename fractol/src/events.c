@@ -2,6 +2,7 @@
 
 int raton(int button, int x, int y, t_fractal *f)
 {
+
 	//Calcular la coordenada compleja de la posicion del raton antes y despues del 
 	//zoom y luego ajustar el centro a esas coordenadas.
 
@@ -18,7 +19,7 @@ int raton(int button, int x, int y, t_fractal *f)
 	new_complex_y = f->center_y + (((double)y - HEIGHT / 2) * (f->zoom / HEIGHT));
 	f->center_x += complex_x - new_complex_x;
 	f->center_y -= complex_y - new_complex_y;
-	draw_fractal(f);
+	re_render(f);
 
 	//posiciones
 	if (button == 1)

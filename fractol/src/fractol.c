@@ -1,6 +1,7 @@
 #include "fractol.h"
 
 
+
 void choose_fractal(t_fractal *f)
 {
 	f->mlx = mlx_init();
@@ -20,11 +21,15 @@ void choose_fractal(t_fractal *f)
 	}
 	if (ft_strncmp(f->name, "s", 2) == 0)
 	{
+		f->center_x = WIDTH / 2;
+		f->center_y = HEIGHT / 2;
 		//using f->cr as depth
+		printf("Zoom: %f\n", f->zoom);
+		f->zoom = 1;
 		f->cr = 1;
-		t_point a = {WIDTH / 2 + f->center_x, 100 - f->center_y}; 
-		t_point b = {100 + f->center_x, HEIGHT - 100 - f->center_y}; 
-		t_point c = {WIDTH - 100 + f->center_x, HEIGHT - 100 - f->center_y}; 
+		t_point a = (t_point){f->center_x, -300 * f->zoom + f->center_y}; 
+		t_point b = (t_point){-300 * f->zoom + f->center_x, 300 * f->zoom + f->center_y}; 
+		t_point c = (t_point){300 * f->zoom + f->center_x, 300 * f->zoom + f->center_y}; 
 
 	    draw_sierpinski(f, a, b, c, f->cr);
 		return ;
