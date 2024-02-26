@@ -34,17 +34,20 @@ typedef struct s_fractal
 	double	zoom;
 	double	zoom_factor;
 	double	movement_speed;
+	t_point	a;
+	t_point	b;
+	t_point	c;
 }	t_fractal;
 
 #define WIDTH 800
 #define HEIGHT 800
-#define MAX_ITER 200
+#define MAX_ITER 60
 #define MAX_DEPTH 7
 
 
 void	draw_fractal(t_fractal *fractal);
-void draw_triangle(t_fractal *f, t_point a, t_point b, t_point c);
-void draw_sierpinski(t_fractal *f, t_point a, t_point b, t_point c, int depth);
+void	draw_triangle(t_fractal *f, t_point a, t_point b, t_point c);
+void	draw_sierpinski(t_fractal *f);
 //void	drawSierpinski(t_fractal *data, int x, int y, int size, int depth);
 //void	drawSierpinski(t_fractal *f, int size);
 
@@ -55,6 +58,7 @@ void	create_img(t_fractal *fractal);
 void	init_fractal_values(t_fractal *f);
 int		close_window(t_fractal *f);
 void	draw_line(void *mlx, void *win, t_point p1, t_point p2, int color);
+void	re_render(t_fractal *f);
 
 //Events
 int raton_movimiento(int x, int y, t_fractal *fractal);

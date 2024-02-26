@@ -91,7 +91,7 @@ int key_press(int keycode, t_fractal *f)
 	if (keycode == FIVE)
 		f->palette = 4;
 
-	draw_fractal(f);
+	re_render(f);
 	if (keycode == SHIFT)
 		f->shift_pressed = 1;
 	return (0);
