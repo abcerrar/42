@@ -56,9 +56,11 @@ int key_press(int keycode, t_fractal *f)
 		f->color_position--;
 	//	ZOOM
 	if (keycode == PLUS)
-		f->zoom *= f->zoom_factor;
+		//f->zoom *= f->zoom_factor;
+		f->cr += 1;
 	if (keycode == MINUS)
-		f->zoom /= f->zoom_factor;
+		//f->zoom /= f->zoom_factor;
+		f->cr -= 1;;
 	//	MOVEMENT
 	if (f->shift_pressed == 1)
 		init_julia_movements(f, keycode);

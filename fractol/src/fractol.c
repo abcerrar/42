@@ -20,9 +20,12 @@ void choose_fractal(t_fractal *f)
 	}
 	if (ft_strncmp(f->name, "s", 2) == 0)
 	{
-		//Using f->cr as DEPTH
-		f->cr = 8;
-	    draw_sierpinski(f);
+		//using f->cr as depth
+		f->cr = 1;
+		t_point a = (t_point){WIDTH / 2 + f->center_x, 100 - f->center_y}; 
+		t_point b = (t_point){100 + f->center_x, HEIGHT - 100 - f->center_y}; 
+		t_point c = (t_point){WIDTH - 100 + f->center_x, HEIGHT - 100 - f->center_y}; 
+	    draw_sierpinski(f, a, b, c, f->cr);
 		return ;
 	}
 	

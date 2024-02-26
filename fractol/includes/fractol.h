@@ -34,9 +34,6 @@ typedef struct s_fractal
 	double	zoom;
 	double	zoom_factor;
 	double	movement_speed;
-	t_point	a;
-	t_point	b;
-	t_point	c;
 }	t_fractal;
 
 #define WIDTH 800
@@ -46,10 +43,10 @@ typedef struct s_fractal
 
 
 void	draw_fractal(t_fractal *fractal);
+
+//Sierpnski
 void	draw_triangle(t_fractal *f, t_point a, t_point b, t_point c);
-void	draw_sierpinski(t_fractal *f);
-//void	drawSierpinski(t_fractal *data, int x, int y, int size, int depth);
-//void	drawSierpinski(t_fractal *f, int size);
+void	draw_sierpinski(t_fractal *f, t_point a, t_point b, t_point c, int depth);
 
 //Utils
 void	my_mlx_pixel_put(t_fractal *f, int color);

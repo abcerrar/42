@@ -22,11 +22,6 @@ void	init_fractal(t_fractal *f)
 	f->zoom = 0.0;
 	f->zoom_factor = 0.0;
 	f->movement_speed = 0.0;
-	/*
-	f->a = NULL;
-	f->b = NULL;
-	f->c = NULL;
-	*/
 }
 
 void	init_fractal_values(t_fractal *f)
