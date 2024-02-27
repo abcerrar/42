@@ -11,8 +11,8 @@ void choose_fractal(t_fractal *f)
 
 	if (ft_strncmp(f->name, "j", 2) == 0 || ft_strncmp(f->name, "Julia", 6) == 0)
 	{
-		f->cr = -0.7;
-		f->ci = 0.27015;
+		f->cr = -0.84;
+		f->ci = 0.24015;
 	}
 	if (ft_strncmp(f->name, "m", 2) == 0 || ft_strncmp(f->name, "Mandelbrot", 11) == 0)
 	{

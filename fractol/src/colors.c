@@ -31,9 +31,9 @@ int	get_palette(int palette, int color)
 
 int	get_color(t_fractal *f)
 {
-	if (f->palette == 0)
-		return (0x050000);
 	if (f->palette == 1)
+		return (0x050000);
+	if (f->palette == 0)
 		return (0x000500);
 	if (f->palette == 2)
 		return (0x000005);

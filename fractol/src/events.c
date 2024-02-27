@@ -26,6 +26,10 @@ int raton(int button, int x, int y, t_fractal *f)
 	{
 		printf("x: %d\ny: %d\n", x, y);
 	}
+	if (button == 4)
+		f->color_position++;
+	if (button == 5) 
+		f->color_position--;
 	return (0);
 }
 
@@ -63,7 +67,7 @@ int key_press(int keycode, t_fractal *f)
 		if (keycode == PLUS)
 			f->cr += 1;
 		if (keycode == MINUS)
-			f->cr -= 1;;
+			f->cr -= 1;
 		init_julia_movements(f, keycode);
 	}
 	else
