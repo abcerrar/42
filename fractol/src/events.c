@@ -38,6 +38,7 @@ int key_release(int keycode, t_fractal *f)
 
 void	init_julia_movements(t_fractal *f, int keycode)
 {
+	printf("Cr-> %f\nCi-> %f\n", f->cr, f->ci);
 	if (keycode == KEY_RIGTH)
 		f->cr += 0.01;
 	if (keycode == KEY_LEFT)
@@ -100,9 +101,10 @@ int key_press(int keycode, t_fractal *f)
 	if (keycode == FIVE)
 		f->palette = 4;
 
-	re_render(f);
 	if (keycode == SHIFT)
 		f->shift_pressed = 1;
+	else
+		re_render(f);
 	return (0);
 }
 

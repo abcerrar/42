@@ -16,8 +16,8 @@ void choose_fractal(t_fractal *f)
 	}
 	if (ft_strncmp(f->name, "m", 2) == 0 || ft_strncmp(f->name, "Mandelbrot", 11) == 0)
 	{
-		f->cr = -0.8;
-		f->ci = 0.0;
+		f->cr = -1.77;
+		f->ci = 0.00015;
 	}
 	if (ft_strncmp(f->name, "s", 2) == 0)
 	{
@@ -26,7 +26,7 @@ void choose_fractal(t_fractal *f)
 		//using f->cr as depth
 		printf("Zoom: %f\n", f->zoom);
 		f->zoom = 1;
-		f->cr = 1;
+		f->cr = 0;
 		t_point a = (t_point){f->center_x, -300 * f->zoom + f->center_y}; 
 		t_point b = (t_point){-300 * f->zoom + f->center_x, 300 * f->zoom + f->center_y}; 
 		t_point c = (t_point){300 * f->zoom + f->center_x, 300 * f->zoom + f->center_y}; 

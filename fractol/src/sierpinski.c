@@ -16,12 +16,8 @@
     }
 }*/
 
-void print_point(t_point punto, char *nombre)
-{
-	printf("Punto %s: [x: %d, y: %d]\n", nombre, punto.x, punto.y);
-}
 
-void fill_triangle2(t_fractal f, t_point a, t_point b, t_point c)
+void fill_triangle2(t_fractal f, t_point a, t_point b, t_point c, int color)
 {
 	t_point top;
 	t_point left;
@@ -54,7 +50,7 @@ void draw_triangle(t_fractal *f, t_point a, t_point b, t_point c) {
 	draw_line(f->mlx, f->win, a, b, get_color(f) * 50);
 	draw_line(f->mlx, f->win, b, c, get_color(f) * 50);
 	draw_line(f->mlx, f->win, c, a, get_color(f) * 50);
-	fill_triangle2(*f, a, b, c);
+	fill_triangle2(*f, a, b, c, get_color(f));
 }
 
 void draw_sierpinski(t_fractal *f, t_point a, t_point b, t_point c, int depth)
