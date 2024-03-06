@@ -39,7 +39,7 @@ Where [fractal] can be:
 - `s` for Sierpinski triangle.
 
 ## After opening the fractal, you can interact with it using the following controls:
-- Use the numbers 1, 2, 3, and 4 to change colors.
+- Use the numbers `1`, `2`, `3`, and `4` to change colors.
 - Use arrow keys to move around.
-- Use the scroll wheel of the mouse or the + and - keys to zoom in and out.
-- Press r to reset.
+- Use the `scroll wheel` of the mouse or the `+` and `-` keys to zoom in and out.
+- Press `r` to reset.
