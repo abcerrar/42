@@ -29,12 +29,3 @@ To complete the born2beroot project, you will need access to a Debian-based syst
 
 7. **Creating a system information script:** Write a script that collects system information (e.g., CPU usage, memory usage, disk space) and displays it to the user. Schedule the script to run every 10 minutes using cron.
 
-## Usage
-Follow the steps outlined above to configure the Debian machine according to the born2beroot project requirements.
-
-## Contributing
-Contributions to born2beroot are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request with your changes.
-
-## License
-This project is licensed under the [MIT License](LICENSE).
-
