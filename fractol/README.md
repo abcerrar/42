@@ -30,6 +30,7 @@ Once compiled, you can execute Fract-ol by passing the fractal you want to visua
 
 ```bash
 ./fractol [fractal]
+```
 
 Where [fractal] can be:
 
