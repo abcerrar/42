@@ -2,6 +2,7 @@
 
 Fract-ol is a project aimed at generating three different fractals using only the MiniLib library, which allows painting pixels on the screen.
 ![Julia Set](images/julia1.png)
+![Julia Set](images/julia2.png)
 
 ## Installation
 
