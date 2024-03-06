@@ -38,7 +38,7 @@ Where [fractal] can be:
 - m for Mandelbrot set.
 - s for Sierpinski triangle.
 
-# After opening the fractal, you can interact with it using the following controls:
+### After opening the fractal, you can interact with it using the following controls:
 
 - Use the numbers 1, 2, 3, and 4 to change colors.
 - Use arrow keys to move around.
