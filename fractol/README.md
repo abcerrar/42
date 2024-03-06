@@ -1,42 +1,33 @@
-Fract-ol
-Fract-ol is a project that allows the generation and visualization of three different fractals using only the MiniLib library to paint pixels on the screen. The available fractals are the Julia set, the Mandelbrot set, and the Sierpinski triangle.
+# Fract-ol
 
-Requirements
-To run Fract-ol, you'll need to have installed on your system:
+Fract-ol is a project aimed at generating three different fractals using only the MiniLib library, which allows painting pixels on the screen.
 
-gcc or another C-compatible compiler
-MiniLib library
-Installation
-Clone the Fract-ol repository on your system:
+## Installation
 
-bash
-Copy code
-git clone https://github.com/your_username/fract-ol.git
-Navigate to the project directory:
+To use Fract-ol, follow these steps:
 
-bash
-Copy code
-cd fract-ol
-Run the make command to compile the program:
+1. Clone the repository:
 
-go
-Copy code
-make
-Usage
-Once the program is compiled, you can run it using the following command:
+    ```bash
+    git clone https://github.com/your_username/fract-ol.git
+    ```
 
-bash
-Copy code
+2. Navigate to the project directory:
+
+    ```bash
+    cd fract-ol
+    ```
+
+3. Compile the project using Makefile:
+
+    ```bash
+    make
+    ```
+
+## Usage
+
+Once compiled, you can execute Fract-ol by passing the fractal you want to visualize as a parameter:
+
+```bash
 ./fractol [fractal]
-Replace [fractal] with one of the following options:
 
-j: Julia set
-m: Mandelbrot set
-s: Sierpinski triangle
-While viewing the fractal, you can use the following controls:
-
-Use numbers 1, 2, 3, and 4 to change colors.
-Use arrow keys to move.
-Use the mouse scroll wheel or + and - keys to zoom.
-Press r to reset.
-Enjoy exploring the fascinating world of fractals!
