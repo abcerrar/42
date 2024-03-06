@@ -26,6 +26,7 @@ To use Fract-ol, follow these steps:
 
 ## Usage
 
+
 Once compiled, you can execute Fract-ol by passing the fractal you want to visualize as a parameter:
 
 ```bash
@@ -33,7 +34,6 @@ Once compiled, you can execute Fract-ol by passing the fractal you want to visua
 ```
 
 Where [fractal] can be:
-
     - 'j' for julia set.
     - m for Mandelbrot set.
     - s for Sierpinski triangle.
